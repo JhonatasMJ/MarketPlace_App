@@ -1,9 +1,18 @@
-import { Text, View } from "react-native";
 
-export default function App () {
+import { Redirect } from "expo-router";
+
+export function App () {
+  const userData = {
+    token: '1234567890',
+    name: 'John Doe',
+  };
+
+ if(userData) {
   return (
-    <View className="flex-1 items-center justify-center bg-red-500">
-      <Text>Olá</Text>
-    </View>
+    <Redirect href="/(private)/home" />
+  )
+ }
+   return (
+    <Redirect href="/login" />
   )
 }

@@ -5,7 +5,7 @@ export interface RegisterHttpParams {
     email: string;
     password: string;
     phone: string;
-    avatarUrl: string;
+    avatarUrl?: string;
 }
 
 export interface RegisterHttpResponse {

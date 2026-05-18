@@ -54,6 +54,14 @@ export const useAppInputViewModel = ({
     return colors.gray[200];
   }
 
+  const handleTextChange = (text: string) => { 
+    if(mask) {
+      onChangeText?.(mask(text) || "");
+    } else {
+      onChangeText?.(text);
+    }
+  }
+
   return {
     showPassword,
     inputRef,
@@ -63,5 +71,6 @@ export const useAppInputViewModel = ({
     handleFocus,
     handleBlur,
     getIconColor,
+    handleTextChange,
   }
 };

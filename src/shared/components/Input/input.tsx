@@ -77,6 +77,12 @@ export function Input({
           <Ionicons name="eye-off-outline" size={22} color="gray" />
         </TouchableOpacity>
       </Pressable>
+      {error && (
+        <Text className={styles.error()}>
+          <Ionicons className='ml-2' name="alert-circle-outline" size={22} color="danger" />
+          {error}
+        </Text>
+      )}
     </View>
   );
 }

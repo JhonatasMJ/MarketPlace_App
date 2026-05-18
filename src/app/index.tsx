@@ -9,7 +9,7 @@ export function App () {
 
  if(userData) {
   return (
-    <Redirect href="/(private)/home" />
+    <Redirect href="/login" />
   )
  }
    return (

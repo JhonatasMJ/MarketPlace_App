@@ -43,6 +43,7 @@ export function Input({
     handleFocus,
     handleBlur,
     handleTextChange,
+    showPassword,
     isFocused,
   } = useAppInputViewModel({
     value,
@@ -70,12 +71,15 @@ export function Input({
           onFocus={handleFocus}
           onBlur={handleBlur}
           onChangeText={handleTextChange}
+          secureTextEntry={showPassword}
           className={styles.input({ className: className })}
           {...props}
         />
-        <TouchableOpacity>
-          <Ionicons name="eye-off-outline" size={22} color="gray" />
+        {secureTextEntry && (
+        <TouchableOpacity onPress={handlePasswordToggle}>
+          <Ionicons name={showPassword ? "eye-outline" : "eye-off-outline"} size={22} color="gray" />
         </TouchableOpacity>
+        )}
       </Pressable>
       {error && (
         <Text className={styles.error()}>

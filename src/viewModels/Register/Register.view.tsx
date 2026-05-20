@@ -9,7 +9,7 @@ export const RegisterView :FC<ReturnType<typeof useRegisterViewModel>> = ({onSub
     return (
         <View>
             <Input label="E-mail" leftIcon="mail-outline" value={email} onChangeText={setEmail} />
-            <Input label="Senha" leftIcon="lock-closed-outline"  />
+            <Input label="Senha" leftIcon="lock-closed-outline" secureTextEntry={true} />
             <TouchableOpacity onPress={onSubmit}>
                 <Text>Registrar</Text>
             </TouchableOpacity>

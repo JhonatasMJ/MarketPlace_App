@@ -52,12 +52,13 @@ export function Input({
     onFocus,
     onBlur,
     onChangeText,
-    error,
     mask,
     isDisabled,
   });
   const styles = inputVariants({
     isFocused,
+    isError: !!error,
+    isDisabled,
   });
   return (
     <View className={styles.container({ className: containerClassName })}>

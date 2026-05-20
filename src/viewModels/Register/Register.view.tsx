@@ -4,8 +4,8 @@ import { useRegisterViewModel } from "./userRegister.viewModel";
 import { Input } from "../../shared/components/Input/Input";
 
 export const RegisterView :FC<ReturnType<typeof useRegisterViewModel>> = ({onSubmit}) => {
-
     const [email, setEmail] = useState("");
+
     return (
         <View>
             <Input label="E-mail" leftIcon="mail-outline" value={email} onChangeText={setEmail} />
@@ -16,3 +16,4 @@ export const RegisterView :FC<ReturnType<typeof useRegisterViewModel>> = ({onSub
         </View>
     )
 }
+

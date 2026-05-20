@@ -4,14 +4,14 @@ import "../styles/global.css";
 
 const queryClient = new QueryClient();
 
+export const unstable_settings = {
+  initialRouteName: "index",
+};
+
 export default function RootLayout() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Stack screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="login" />
-        <Stack.Screen name="register" />
-        <Stack.Screen name="(private)" />
-      </Stack>
+      <Stack screenOptions={{ headerShown: false }} />
     </QueryClientProvider>
   );
 }

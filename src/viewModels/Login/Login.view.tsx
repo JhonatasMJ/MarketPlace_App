@@ -3,8 +3,13 @@ import FormHeader from "../../shared/components/FormHeader/FormHeader";
 import { Input } from "../../shared/components/Input/Input";
 import { router } from "expo-router";
 import { KeyboardContainer } from "../../shared/components/KeyboardContainer/KeyboardContainer";
+import { useLoginViewModel } from "./useLogin.viewModel";
+import { FC } from "react";
+import { InputController } from "../../shared/components/InputController/InputController";
 
-export const LoginView = () => {
+export const LoginView: FC<ReturnType<typeof useLoginViewModel>> = ({
+  control,
+}) => {
   return (
     <KeyboardContainer>
       <View className="flex-1 items-center justify-center px-[40px]">
@@ -12,7 +17,21 @@ export const LoginView = () => {
           title="Acesse sua conta"
           subtitle="Informe seus e-mail e senha para entrar"
         />
-        <Input />
+        <InputController
+        control={control}
+        name="email"
+        label="E-mail"
+        leftIcon="mail-outline"
+        placeholder="Digite seu e-mail"
+        />
+        <InputController
+        control={control}
+        name="password"
+        label="Senha"
+        leftIcon="lock-closed-outline"
+        placeholder="Digite sua senha"
+        secureTextEntry
+        />
         <TouchableOpacity onPress={() => router.push("/register")}>
           <Text>Registro</Text>
         </TouchableOpacity>

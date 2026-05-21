@@ -9,6 +9,7 @@ import { InputController } from "../../shared/components/InputController/InputCo
 
 export const LoginView: FC<ReturnType<typeof useLoginViewModel>> = ({
   control,
+  onSubmit,
 }) => {
   return (
     <KeyboardContainer>
@@ -32,6 +33,9 @@ export const LoginView: FC<ReturnType<typeof useLoginViewModel>> = ({
         placeholder="Digite sua senha"
         secureTextEntry
         />
+           <TouchableOpacity onPress={onSubmit}>
+          <Text>Entrar</Text>
+        </TouchableOpacity>
         <TouchableOpacity onPress={() => router.push("/register")}>
           <Text>Registro</Text>
         </TouchableOpacity>

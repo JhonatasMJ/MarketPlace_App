@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
-import { useRegisterViewModel } from "./userRegister.viewModel";
+import { useRegisterViewModel } from "./useRegister.viewModel";
 import { InputController } from "../../shared/components/InputController/InputController";
 import FormHeader from "../../shared/components/FormHeader/FormHeader";
 import { router } from "expo-router";

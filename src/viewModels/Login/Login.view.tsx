@@ -6,6 +6,7 @@ import { KeyboardContainer } from "../../shared/components/KeyboardContainer/Key
 import { useLoginViewModel } from "./useLogin.viewModel";
 import { FC } from "react";
 import { InputController } from "../../shared/components/InputController/InputController";
+import { Button } from "../../shared/components/Button/Button";
 
 export const LoginView: FC<ReturnType<typeof useLoginViewModel>> = ({
   control,
@@ -33,9 +34,12 @@ export const LoginView: FC<ReturnType<typeof useLoginViewModel>> = ({
         placeholder="Digite sua senha"
         secureTextEntry
         />
-           <TouchableOpacity onPress={onSubmit}>
-          <Text>Entrar</Text>
-        </TouchableOpacity>
+         <Button
+         onPress={onSubmit}
+         leftIcon="log-in-outline"
+         >
+          Entrar
+         </Button>
         <TouchableOpacity onPress={() => router.push("/register")}>
           <Text>Registro</Text>
         </TouchableOpacity>

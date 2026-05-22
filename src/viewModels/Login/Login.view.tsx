@@ -36,7 +36,7 @@ export const LoginView: FC<ReturnType<typeof useLoginViewModel>> = ({
         />
          <Button
          onPress={onSubmit}
-         leftIcon="log-in-outline"
+         rightIcon="arrow-forward"
          >
           Entrar
          </Button>

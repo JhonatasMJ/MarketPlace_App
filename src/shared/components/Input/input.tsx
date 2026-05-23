@@ -84,7 +84,6 @@ export function Input({
       </Pressable>
       {error && (
         <Text className={styles.error()}>
-          <Ionicons className='mr-4' name="alert-circle-outline" size={20} color="danger" />
           {error}
         </Text>
       )}

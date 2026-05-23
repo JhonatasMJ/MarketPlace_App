@@ -19,6 +19,7 @@ export function Button({
   hasIcon,
   isLoading,
   isDisabled,
+  className,
   ...props
 }: ButtonProps) {
   const styles = buttonVariants({
@@ -44,7 +45,7 @@ export function Button({
     )
   }
   return (
-    <TouchableOpacity className={styles.base()} {...props}>
+    <TouchableOpacity className={styles.base({ className: className })} {...props}>
       {renderContent()}
     </TouchableOpacity>
   );

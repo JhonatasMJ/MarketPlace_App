@@ -15,6 +15,7 @@ export const LoginView: FC<ReturnType<typeof useLoginViewModel>> = ({
   return (
     <KeyboardContainer>
       <View className="flex-1 items-center justify-center px-[40px]">
+        <View className="flex-1 w-full items-center justify-center">
         <FormHeader
           title="Acesse sua conta"
           subtitle="Informe seus e-mail e senha para entrar"
@@ -37,13 +38,24 @@ export const LoginView: FC<ReturnType<typeof useLoginViewModel>> = ({
          <Button
          onPress={onSubmit}
          rightIcon="arrow-forward"
+         className="mt-6"
          >
-          Entrar
+          
+         Login
          </Button>
-        <TouchableOpacity onPress={() => router.push("/register")}>
-          <Text>Registro</Text>
-        </TouchableOpacity>
+        </View>
+         <View className="flex-2 pb-16">
+        <Text className=" text-base text-gray-300 mb-6">Ainda não tem uma conta?</Text>
+         <Button
+         onPress={() => router.push("/register")}
+         rightIcon="arrow-forward"
+         variant="outlined"
+         >
+          Registro
+         </Button>
+         </View>
       </View>
+
     </KeyboardContainer>
   );
 };

@@ -5,6 +5,7 @@ import { InputController } from "../../shared/components/InputController/InputCo
 import FormHeader from "../../shared/components/FormHeader/FormHeader";
 import { router } from "expo-router";
 import { KeyboardContainer } from "../../shared/components/KeyboardContainer/KeyboardContainer";
+import { Button } from "../../shared/components/Button/Button";
 
 export const RegisterView: FC<ReturnType<typeof useRegisterViewModel>> = ({
   onSubmit,
@@ -66,12 +67,24 @@ export const RegisterView: FC<ReturnType<typeof useRegisterViewModel>> = ({
         placeholder="Confirmesua senha"
       />
 
-      <TouchableOpacity onPress={onSubmit}>
-        <Text>Registrar</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => router.push("/login")}>
-        <Text>Voltar para login</Text>
-      </TouchableOpacity>
+      <Button
+      onPress={onSubmit}
+      rightIcon="arrow-forward"
+      className="mt-6"
+      >
+        Registrar
+      </Button>
+      <View className="mt-16" >
+        <Text className="text-base text-gray-300 mb-2">Já tem uma conta?</Text>
+      <Button
+      onPress={() => router.push("/login")}
+      variant="outlined"
+      className="mt-6"
+      >
+        Login
+      </Button>
+
+      </View>
       </ScrollView>
     </KeyboardContainer>
   );

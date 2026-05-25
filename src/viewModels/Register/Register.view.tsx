@@ -6,11 +6,13 @@ import FormHeader from "../../shared/components/FormHeader/FormHeader";
 import { router } from "expo-router";
 import { KeyboardContainer } from "../../shared/components/KeyboardContainer/KeyboardContainer";
 import { Button } from "../../shared/components/Button/Button";
+import { Ionicons } from "@expo/vector-icons";
 
 export const RegisterView: FC<ReturnType<typeof useRegisterViewModel>> = ({
   onSubmit,
   control,
   errors,
+  handleSelectAvatar,
 }) => {
   const [email, setEmail] = useState("");
 
@@ -21,6 +23,9 @@ export const RegisterView: FC<ReturnType<typeof useRegisterViewModel>> = ({
       title="Crie sua conta" 
       subtitle="Informe seus dados pessoais e de acesso" 
       />
+      <TouchableOpacity onPress={handleSelectAvatar}>
+        <Ionicons name="cloud-upload-outline" size={32} color="gray" className="mr-3" />
+      </TouchableOpacity>
       <InputController
         control={control}
         name="name"

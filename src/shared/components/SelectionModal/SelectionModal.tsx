@@ -36,8 +36,9 @@ export function SelectionModal({
         )}
       </View>
       <View className="gap-3">
-        {options.map((option) => (
+        {options.map((option, index) => (
           <TouchableOpacity
+            key={index}
             className={getButtonClass(option.variant || "primary")}
             onPress={option.onPress}
           >

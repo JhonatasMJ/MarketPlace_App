@@ -5,12 +5,14 @@ import { useRegisterMutation } from "../../shared/queries/auth/use-register.muta
 import { useUserStore } from "../../shared/store/user-store";
 import { useModal } from "../../shared/hooks/useModal";
 import { useCamera } from "../../shared/hooks/useCamera";
+import { useGallery } from "../../shared/hooks/useGallery";
 
 export const useRegisterViewModel = () => {
   const userRegisterMutation = useRegisterMutation();
   const { setSession } = useUserStore();
   const modals = useModal();
-  const { openCamera } = useCamera();
+  const { openCamera } = useCamera({});
+  const { openGallery } = useGallery({});
 
   const handleSelectAvatar = () => { 
     modals.showSelection({
@@ -21,8 +23,9 @@ export const useRegisterViewModel = () => {
           text: "Galeria",
           icon: "images",
           variant: "primary",
-          onPress: () => {
-            console.log("Galeria");
+          onPress:  async () => {
+            const image = await openGallery();
+            console.log(image);
           },
         },
         {

@@ -1,42 +1,42 @@
+import { ImagePickerOptions } from "expo-image-picker";
 import { useCallback, useState } from "react";
 import * as ImagePicker from "expo-image-picker";
 import { Toast } from "toastify-react-native";
-import { ImagePickerOptions } from "expo-image-picker";
 
-export const useCamera = ({
+export const useGallery = ({
   pickerOptions,
 }: {
   pickerOptions: ImagePickerOptions;
 }) => {
   const [isLoading, setIsLoading] = useState(false);
-  const requestCameraPermission = useCallback(async (): Promise<boolean> => {
+  const requestGalleryPermission = useCallback(async (): Promise<boolean> => {
     try {
-      const { status } = await ImagePicker.requestCameraPermissionsAsync();
+      const { status } =
+        await ImagePicker.requestMediaLibraryPermissionsAsync();
       const currentStatus = status === "granted";
       if (!currentStatus) {
-        Toast.error("Permissão de câmera negada", "top");
+        Toast.error("Permissão de galeria negada", "top");
       }
       return currentStatus;
     } catch (error) {
-      Toast.error("Erro ao solicitar permissão de câmera", "top");
+      Toast.error("Erro ao solicitar permissão de galeria", "top");
       return false;
     }
   }, []);
 
-  const openCamera = useCallback(async (): Promise<string | null> => {
+  const openGallery = useCallback(async (): Promise<string | null> => {
     setIsLoading(true);
     try {
-      const hasPermission = await requestCameraPermission();
+      const hasPermission = await requestGalleryPermission();
       if (!hasPermission) return null;
-      const result = await ImagePicker.launchCameraAsync(pickerOptions);
-
+      const result = await ImagePicker.launchImageLibraryAsync(pickerOptions);
       if (!result.canceled && result.assets && result.assets.length > 0) {
-        Toast.success("Foto capturada com sucesso", "top");
+        Toast.success("Imagem selecionada com sucesso", "top");
         return result.assets[0].uri;
       }
       return null;
     } catch (error) {
-      Toast.error("Erro ao abrir a câmera", "top");
+      Toast.error("Erro ao abrir a galeria", "top");
       return null;
     } finally {
       setIsLoading(false);
@@ -45,7 +45,7 @@ export const useCamera = ({
 
   return {
     isLoading,
-    requestCameraPermission,
-    openCamera,
+    requestGalleryPermission,
+    openGallery,
   };
 };

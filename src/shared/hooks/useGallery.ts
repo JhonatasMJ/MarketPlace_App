@@ -3,11 +3,7 @@ import { useCallback, useState } from "react";
 import * as ImagePicker from "expo-image-picker";
 import { Toast } from "toastify-react-native";
 
-export const useGallery = ({
-  pickerOptions,
-}: {
-  pickerOptions: ImagePickerOptions;
-}) => {
+export const useGallery = (pickerOptions: ImagePickerOptions) => {
   const [isLoading, setIsLoading] = useState(false);
   const requestGalleryPermission = useCallback(async (): Promise<boolean> => {
     try {

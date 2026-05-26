@@ -2,6 +2,7 @@ import { ImagePickerOptions } from "expo-image-picker";
 import { useCallback, useState } from "react";
 import * as ImagePicker from "expo-image-picker";
 import { Toast } from "toastify-react-native";
+import { Alert, Linking } from "react-native";
 
 export const useGallery = (pickerOptions: ImagePickerOptions) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -11,7 +12,23 @@ export const useGallery = (pickerOptions: ImagePickerOptions) => {
         await ImagePicker.requestMediaLibraryPermissionsAsync();
       const currentStatus = status === "granted";
       if (!currentStatus) {
-        Toast.error("Permissão de galeria negada", "top");
+        Alert.alert(
+          "Permissão de galeria negada",
+          "Precisamos da sua permissão para acessar a galeria",
+          [
+            {
+              text: "Cancelar",
+              style: "cancel",
+            },
+            {
+              text: "Abrir configurações",
+              onPress: () => {
+                Linking.openSettings();
+              },
+              style: "default",
+            },
+          ],
+        )
       }
       return currentStatus;
     } catch (error) {

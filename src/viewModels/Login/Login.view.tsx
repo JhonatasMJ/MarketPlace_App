@@ -47,7 +47,7 @@ export const LoginView: FC<ReturnType<typeof useLoginViewModel>> = ({
          <View className="flex-2 pb-16">
         <Text className=" text-base text-gray-300 mb-6">Ainda não tem uma conta?</Text>
          <Button
-         onPress={() => router.push("/register")}
+         onPress={() => router.push("/(public)/register")}
          rightIcon="arrow-forward"
          variant="outlined"
          >

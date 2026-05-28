@@ -13,7 +13,10 @@ export const unstable_settings = {
 export default function RootLayout() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Stack screenOptions={{ headerShown: false }} />
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="(public)" />
+        <Stack.Screen name="(private)" />
+      </Stack>
       <Modal />
       <ToastManager useModal={false} />
     </QueryClientProvider>

@@ -6,20 +6,19 @@ import { useUserStore } from "../../shared/store/user-store";
 import { useImage } from "../../shared/hooks/useImage";
 import { useState } from "react";
 import { CameraType } from "expo-image-picker";
-
+import { useUploadAvatarMutation } from "../../shared/queries/auth/use-upload-avatar.mutation";
 
 export const useRegisterViewModel = () => {
-  const userRegisterMutation = useRegisterMutation();
-  const { setSession } = useUserStore();
+  const { setSession, updateUser } = useUserStore();
   const [avatarUri, setAvatarUri] = useState<string | null>(null);
   const { handleSelectImage } = useImage({
     callback: setAvatarUri,
-   cameraType: CameraType.front
+    cameraType: CameraType.front,
   });
 
-  const handleSelectAvatar = async () => { 
+  const handleSelectAvatar = async () => {
     await handleSelectImage();
-   }
+  };
 
   const {
     control,
@@ -36,17 +35,16 @@ export const useRegisterViewModel = () => {
     },
   });
 
+  /* Mutation para fazer upload da foto de perfil */
+  const uploadAvatarMutation = useUploadAvatarMutation();
+  const userRegisterMutation = useRegisterMutation({});
+
   /* Função para enviar os dados do formulário para o backend */
   const onSubmit = handleSubmit(async (userData) => {
     /* Remove o confirmPassword do objeto userData */
     const { confirmPassword, ...registerData } = userData;
-    const mutationResponse =
-      await userRegisterMutation.mutateAsync(registerData);
-    setSession({
-      user: mutationResponse.user,
-      token: mutationResponse.token,
-      refreshToken: mutationResponse.refreshToken,
-    });
+    await userRegisterMutation.mutateAsync(registerData);
+
   });
 
   return {

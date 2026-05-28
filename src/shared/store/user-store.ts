@@ -21,6 +21,7 @@ export interface UserStore {
   setSession: (sessionData: SetSessionParams) => void;
   logout: () => void;
   updateTokens: (updateTokensData: UpdateTokensParams) => void;
+  updateUser: (updatedUserData: Partial<UserInterface>) => void;
 }
 
 /* Zustand store para gerenciamento de sessão do usuário e usa o AsyncStorage para persistir os dados */
@@ -36,6 +37,11 @@ export const useUserStore = create<UserStore>()(
       },
       updateTokens: (updateTokensData) => {
         set({ ...updateTokensData });
+      },
+      updateUser: (updatedUserData) => {
+        set((state) => ({
+          user: state.user ? {...state.user, ...updatedUserData} : null,
+        }));
       },
     }),
     {

@@ -40,11 +40,9 @@ export const useRegisterViewModel = () => {
   const userRegisterMutation = useRegisterMutation({});
 
   /* Função para enviar os dados do formulário para o backend */
-  const onSubmit = handleSubmit(async (userData) => {
-    /* Remove o confirmPassword do objeto userData */
+  const onSubmit = handleSubmit((userData) => {
     const { confirmPassword, ...registerData } = userData;
-    await userRegisterMutation.mutateAsync(registerData);
-
+    userRegisterMutation.mutate(registerData);
   });
 
   return {

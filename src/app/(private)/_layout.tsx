@@ -6,5 +6,7 @@ export default function PrivateLayout() {
   if (!user || !token) {
     return <Redirect href="/(public)/login" />;
   }
-  return <Stack screenOptions={{ headerShown: false }}></Stack>;
+  return <Stack screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="(tabs)"/>
+  </Stack>;
 }

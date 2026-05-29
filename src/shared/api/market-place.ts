@@ -12,6 +12,10 @@ const getBaseUrl = () => {
 
 export const baseURL = getBaseUrl();
 
+const AUTH_STORAGE_KEY = "marketplace-auth";
+
+const PUBLIC_ROUTES = ["/auth/register", "/auth/login", "/auth/refresh"];
+
 /* Essa classe é responsável por criar uma instância do axios e fornecer um método para obter a instância */
 export class MarketPlaceApiClient {
   private instance: AxiosInstance;
@@ -33,18 +37,26 @@ export class MarketPlaceApiClient {
   private setupInterceptors() {
     this.instance.interceptors.request.use(
       async (config) => {
-        const userData = await AsyncStorage.getItem("userData");
-  
-        if (userData) {
+        const isPublicRoute = PUBLIC_ROUTES.some((route) =>
+          config.url?.includes(route),
+        );
+
+        if (isPublicRoute) {
+          return config;
+        }
+
+        const authData = await AsyncStorage.getItem(AUTH_STORAGE_KEY);
+
+        if (authData) {
           const {
             state: { token },
-          } = JSON.parse(userData);
-  
+          } = JSON.parse(authData);
+
           if (token) {
             config.headers.Authorization = `Bearer ${token}`;
           }
         }
-  
+
         return config;
       },
       (error) => {

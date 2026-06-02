@@ -21,7 +21,7 @@ export const Header = () => {
           )}
            </View>
           <View>
-            <Text className="capitalize">
+            <Text className="capitalize font-bold text-base">
               Olá, {user?.name?.split(" ")[0] ?? "Usuário"}
             </Text>
             <View className="flex-row items-center gap-2">

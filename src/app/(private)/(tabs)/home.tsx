@@ -1,13 +1,11 @@
 import { router } from "expo-router";
 import { Text, TouchableOpacity, View } from "react-native";
+import { HomeView } from "../../../viewModels/Home/Home.view";
 
 export default function Home() {
     return (
-        <View>
-            <Text>Home</Text>
-            <TouchableOpacity onPress={() => router.push('/login')}>
-                <Text>Logout</Text>
-            </TouchableOpacity>
-    </View>
+     <>
+     <HomeView/>
+     </>
   );
 }

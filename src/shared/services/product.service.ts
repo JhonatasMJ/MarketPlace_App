@@ -7,7 +7,7 @@ import { ProductResponse } from "../interfaces/http/product-response";
 export const getProducts = async (params: GetProductsRequest) => {
   const { data } = await marketPlaceApiClient.post<ProductResponse>(
     "/products",
-    { params },
+    params,
   );
   return data;
 };

@@ -2,36 +2,23 @@ import { FlatList, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Header } from "../../shared/components/Header/Header";
 import { SearchInput } from "../../shared/components/SearchInput/SearchInput";
-import { ProductInterface } from "../../shared/interfaces/product";
 import { ProductCard } from "../../shared/components/ProductCard";
+import { useHomeViewModel } from "./useHome.viewModel";
+import { FC } from "react";
 
-export const HomeView = () => {
-  const productsList: ProductInterface[] = [
-    {
-      id: 1,
-      name: "Produto 1",
-      description: "Descrição do produto 1",
-      photo: "https://via.placeholder.com/150",
-      height: "100",
-      width: "100",
-      weight: "100",
-      value: "100",
-      averageRating: 5,
-      views: 100,
-      ratingCount: 100,
-      categoryId: 1,
-      category: { id: 1, name: "Categoria 1" },
-      createdAt: "2021-01-01",
-      updatedAt: "2021-01-01",
-      deletedAt: "2021-01-01",
-    },
-  ];
+export const HomeView: FC<ReturnType<typeof useHomeViewModel>> = ({
+  products,
+  handleEndReached,
+}) => {
   return (
     <SafeAreaView edges={["top"]} className="flex-1">
       <FlatList
-        data={productsList}
+        data={products}
         renderItem={({ item }) => <ProductCard product={item} />}
-        keyExtractor={(id) => `product-list-item-${id}`}
+        keyExtractor={(item) => `product-list-item-${item.id}`}
+        numColumns={2}
+        columnWrapperClassName="justify-between"
+        onEndReached={handleEndReached}
         ListHeaderComponent={() => (
           <>
             <Header />

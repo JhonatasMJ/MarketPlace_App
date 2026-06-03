@@ -1,10 +1,10 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { getProducts } from "../../services/product.service";
+import { buildImageUrl } from "../../helpers/buildImageUrl";
 
 export const useProductInfiniteQuery = () => {
   /* Hook para buscar produtos de forma infinita */
   const {
-    data,
     error,
     fetchNextPage,
     hasNextPage,
@@ -12,6 +12,7 @@ export const useProductInfiniteQuery = () => {
     isLoading,
     refetch,
     isRefetching,
+    data,
   } = useInfiniteQuery({
     queryFn: async ({ pageParam = 1 }) => {
       try {
@@ -34,12 +35,22 @@ export const useProductInfiniteQuery = () => {
     },
     /* Parâmetro inicial de paginação */
     initialPageParam: 1,
-    /* Chave de consulta para o cache */
+    /* Chave de consulta para o cache, ao inves de chamar a api toda vez, o cache vai ser usado para buscar os dados */
     queryKey: ["products"],
+    staleTime: 1000 * 60 * 60, // 60 minutos
+
   });
 
+  const products =
+    data?.pages
+      .flatMap((page) => page.data)
+      .map((product) => ({
+        ...product,
+        photo: buildImageUrl(product.photo),
+      })) ?? [];
+
   return {
-    data,
+    products,
     error,
     fetchNextPage,
     hasNextPage,

@@ -1,4 +1,5 @@
 import { useProductInfiniteQuery } from "../../shared/queries/product/user-product-infinite.query";
+import { useUserStore } from "../../shared/store/user-store";
 
 export const useHomeViewModel = () => {
   const {
@@ -11,6 +12,8 @@ export const useHomeViewModel = () => {
     refetch,
     isRefetching,
   } = useProductInfiniteQuery();
+
+  const { logout } = useUserStore();
 
   /* Função para carregar mais produtos, caso exista mais produtos e não esteja carregando mais produtos */
   const handleLoadMore = () => {
@@ -26,11 +29,19 @@ export const useHomeViewModel = () => {
   const handleEndReached = () => {
     handleLoadMore();
   }
+
+  const handleLogout = () => { 
+    logout();
+  }
   
   return {
     handleLoadMore,
     handleRefresh,
     products,
     handleEndReached,
+    handleLogout,
+    isLoading,
+    hasNextPage,
+    isFetchingNextPage,
   };
 };

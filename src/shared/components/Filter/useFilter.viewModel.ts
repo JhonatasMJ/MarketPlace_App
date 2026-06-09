@@ -1,7 +1,11 @@
+import { useGetProductCategories } from "../../queries/product/use-get-product-categories";
+
 export const useFilterViewModel = () => {
+
+    const {data: productCategories, isLoading, error, refetch} = useGetProductCategories();
+
     return {
-        filter: () => {
-            console.log("filter");
-        }
+       productCategories,
+       isLoading,
     }
 }

@@ -1,4 +1,4 @@
-import { useProductInfiniteQuery } from "../../shared/queries/product/user-product-infinite.query";
+import { useProductInfiniteQuery } from "../../shared/queries/product/use-product-infinite.query";
 import { useUserStore } from "../../shared/store/user-store";
 
 export const useHomeViewModel = () => {

@@ -7,7 +7,8 @@ import { Input } from "../Input/Input";
 import { Button } from "../Button/Button";
 
 export const FilterView: FC<ReturnType<typeof useFilterViewModel>> = ({
-  filter,
+  productCategories,
+  isLoading,
 }) => {
   return (
     <View>

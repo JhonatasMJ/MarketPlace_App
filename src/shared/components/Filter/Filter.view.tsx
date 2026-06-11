@@ -10,6 +10,10 @@ import Checkbox from "expo-checkbox";
 export const FilterView: FC<ReturnType<typeof useFilterViewModel>> = ({
   productCategories,
   isLoading,
+  handleValueMaxChange,
+  handleValueMinChange,
+  handleCategoryToggle,
+  selectedCategories,
 }) => {
   return (
     <View>
@@ -24,6 +28,7 @@ export const FilterView: FC<ReturnType<typeof useFilterViewModel>> = ({
         <View className="flex-row mb-4 w-[100%]">
           <View className="flex-1">
             <Input
+              onChangeText={(text) => handleValueMinChange(Number(text))}
               placeholder="De"
               keyboardType="numeric"
               containerClassName="w-[90%]"
@@ -31,7 +36,8 @@ export const FilterView: FC<ReturnType<typeof useFilterViewModel>> = ({
           </View>
           <View className="flex-1">
             <Input
-              placeholder="De"
+              onChangeText={(text) => handleValueMaxChange(Number(text))}
+              placeholder="Até"
               keyboardType="numeric"
               containerClassName="w-[90%]"
             />
@@ -39,14 +45,21 @@ export const FilterView: FC<ReturnType<typeof useFilterViewModel>> = ({
         </View>
         <Text className="font-semibold text-base text-gray-300">CATEGORIA</Text>
         {isLoading ? (
-          <Text>
-            Carregando categorias...
-          </Text>
+          <Text>Carregando categorias...</Text>
         ) : (
-         <View className="mb-6 gap-3">
-            {productCategories?.map(({name, id}) => (
-              <TouchableOpacity className="flex-row items-center py-2" key={`product-category-${id}`}>
-                <Checkbox color={colors["purple-base"]} className="mr-3 rounded-md" />
+          <View className="mb-6 gap-3">
+            {productCategories?.map(({ name, id }) => (
+              <TouchableOpacity
+                onPress={() => handleCategoryToggle(id)}
+                className="flex-row items-center py-2"
+                key={`product-category-${id}`}
+              >
+                <Checkbox
+                  value={selectedCategories.includes(id)}
+                  onValueChange={() => handleCategoryToggle(id)}
+                  color={colors["purple-base"]}
+                  className="mr-3 rounded-md"
+                />
                 <Text className="text-base text-gray-400">{name}</Text>
               </TouchableOpacity>
             ))}

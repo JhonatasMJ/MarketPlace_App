@@ -7,9 +7,9 @@ interface ProductCardParams {
 
 }
 
-export function ProductCard(props: ProductCardParams) {
-    const viewModel = useProductCardViewModel(props);
-    return (
+export function ProductCard(value: ProductCardParams) {
+    const viewModel = useProductCardViewModel(value);
+    return ( 
         <ProductCardView {...viewModel} />
     )
 }

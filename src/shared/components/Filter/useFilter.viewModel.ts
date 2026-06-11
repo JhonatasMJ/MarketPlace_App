@@ -1,4 +1,5 @@
 import { useGetProductCategories } from "../../queries/product/use-get-product-categories";
+import { useBottomSheetStore } from "../../store/bottomSheet-store";
 import { useFilterStore } from "../../store/use-filter-store";
 
 export const useFilterViewModel = () => {
@@ -7,7 +8,8 @@ export const useFilterViewModel = () => {
     isLoading,
   } = useGetProductCategories();
 
-  const { updateFilter, filterState } = useFilterStore();
+  const { updateFilter, filterState, applyFilters, resetFilters } = useFilterStore();
+  const {close} = useBottomSheetStore();
 
   const handleValueMaxChange = (value: number) => {
     updateFilter({ key: "valueMax", value: value });
@@ -34,6 +36,17 @@ export const useFilterViewModel = () => {
     }
   };
 
+  const handleApplyFilters = () => {
+    applyFilters();
+    close();
+  };
+
+  const handleResetFilters = () => {
+      close();
+    resetFilters();
+  };
+
+
   return {
     productCategories,
     isLoading,
@@ -41,5 +54,7 @@ export const useFilterViewModel = () => {
     handleValueMinChange,
     handleCategoryToggle,
     selectedCategories: filterState.selectedCategories,
+    handleApplyFilters,
+    handleResetFilters,
   };
 };

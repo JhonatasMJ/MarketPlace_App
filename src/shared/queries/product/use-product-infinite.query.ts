@@ -1,8 +1,13 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { getProducts } from "../../services/product.service";
 import { buildImageUrl } from "../../helpers/buildImageUrl";
+import { FilterState } from "../../store/use-filter-store";
 
-export const useProductInfiniteQuery = () => {
+interface productInfinityQueryParams {
+  filters?: FilterState;
+}
+
+export const useProductInfiniteQuery = ({filters}: productInfinityQueryParams) => {
   /* Hook para buscar produtos de forma infinita */
   const {
     error,
@@ -21,6 +26,13 @@ export const useProductInfiniteQuery = () => {
             page: pageParam,
             perPage: 10,
           },
+         filters: {
+          ...filters,
+          searchText: filters?.searchText ?? undefined,
+          minValue: filters?.valueMin ?? undefined,
+          maxValue: filters?.valueMax ?? undefined,
+          categoryId: filters?.selectedCategories ?? [],
+         }
         });
         return response;
       } catch (error) {
@@ -36,7 +48,7 @@ export const useProductInfiniteQuery = () => {
     /* Parâmetro inicial de paginação */
     initialPageParam: 1,
     /* Chave de consulta para o cache, ao inves de chamar a api toda vez, o cache vai ser usado para buscar os dados */
-    queryKey: ["products"],
+    queryKey: ["products", filters],
     staleTime: 1000 * 60 * 60, // 60 minutos
 
   });

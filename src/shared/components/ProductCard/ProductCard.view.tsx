@@ -4,6 +4,7 @@ import { FC } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { colors } from "../../../styles/colors";
 import { PriceText } from "../PriceText";
+import { router } from "expo-router";
 
 export const ProductCardView: FC<
   ReturnType<typeof useProductCardViewModel>
@@ -13,7 +14,7 @@ export const ProductCardView: FC<
   formatRating,
 }: ReturnType<typeof useProductCardViewModel>) => {
   return (
-    <TouchableOpacity className="w-[48%] my-1 rounded-lg shadow-sm overflow-hidden h-[157px] p-[4px] bg-white mb-2">
+    <TouchableOpacity onPress={() => router.push(`/product/${product.id}`)} className="w-[48%] my-1 rounded-lg shadow-sm overflow-hidden h-[157px] p-[4px] bg-white mb-2">
       <View>
         <Image
           source={{ uri: product.photo }}

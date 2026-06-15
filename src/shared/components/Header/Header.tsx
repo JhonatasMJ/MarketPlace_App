@@ -4,7 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { colors } from "../../../styles/colors";
 
 export const Header = () => {
-  const { user } = useUserStore();
+  const { user, logout } = useUserStore();
   return (
     <View>
       <TouchableOpacity className="flex-row items-center gap-6">
@@ -28,6 +28,12 @@ export const Header = () => {
               <Text className="color-purple-base font-bold text-sm">Ver Perfil</Text>
               <Ionicons name="arrow-forward-outline" size={20} color={colors["purple-base"]} />
             </View>
+            <TouchableOpacity onPress={() => logout()}>
+            <Text>
+              sair da conta
+            </Text>
+            </TouchableOpacity>
+           
           </View>
        
       </TouchableOpacity>

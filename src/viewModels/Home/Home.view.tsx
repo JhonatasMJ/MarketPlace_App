@@ -8,11 +8,9 @@ import { colors } from "../../styles/colors";
 import { RenderHeader } from "../../shared/components/RenderHeader/RenderHeader";
 
 
-
 export const HomeView: FC<ReturnType<typeof useHomeViewModel>> = ({
   products,
   handleEndReached,
-  handleLogout,
   isLoading,
   hasNextPage,
   isFetchingNextPage,
@@ -23,7 +21,6 @@ export const HomeView: FC<ReturnType<typeof useHomeViewModel>> = ({
 }) => {
   return (
     <SafeAreaView edges={["top"]} className="flex-1">
-
       <FlatList
         data={products}
         renderItem={({ item }) => <ProductCard product={item} />}
@@ -50,6 +47,11 @@ export const HomeView: FC<ReturnType<typeof useHomeViewModel>> = ({
             refreshing={isRefetching}
             onRefresh={handleRefresh}
           />
+        }
+        ListEmptyComponent={
+          <View className="flex-1 items-center justify-center">
+            <Text className="text-gray-500">Nenhum produto encontrado</Text>
+          </View>
         }
       />
     </SafeAreaView>

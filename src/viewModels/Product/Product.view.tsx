@@ -3,6 +3,7 @@ import { FlatList, Text, View } from "react-native";
 import { useProductViewModel } from "./useProduct.viewModel";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ProductHeader } from "../../shared/components/ProductHeader";
+import { CommentItem } from "../../shared/components/CommentItem/CommentItem";
 
 export const ProductView: FC<ReturnType<typeof useProductViewModel>> = ({
   product,
@@ -31,7 +32,7 @@ export const ProductView: FC<ReturnType<typeof useProductViewModel>> = ({
       <FlatList
         className="px-6"
         data={comments}
-        renderItem={() => <></>}
+        renderItem={({ item }) => <CommentItem comment={item} />}
         ListHeaderComponent={<ProductHeader productDetails={product} />}
       />
     </SafeAreaView>

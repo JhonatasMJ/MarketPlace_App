@@ -8,6 +8,7 @@ import { ListFooter } from "../../shared/components/ListFooter/ListFooter";
 import { EmptyList } from "../../shared/components/EmptyList/EmptyList";
 import { Loading } from "../../shared/components/Loading/Loading";
 import { Error } from "../../shared/components/Error/Error";
+import { FooterCart } from "../../shared/components/FooterCart/FooterCart";
 
 
 export const ProductView: FC<ReturnType<typeof useProductViewModel>> = ({
@@ -31,7 +32,7 @@ export const ProductView: FC<ReturnType<typeof useProductViewModel>> = ({
   if(isLoading || !product) return <Loading />
   
   return (
-    <SafeAreaView className="flex-1 bg-background">
+    <SafeAreaView edges={["top"]} className="flex-1 bg-background">
       <FlatList
         className="px-6"
         data={comments}
@@ -42,7 +43,9 @@ export const ProductView: FC<ReturnType<typeof useProductViewModel>> = ({
         refreshing={isRefetching}
         ListFooterComponent={<ListFooter isLoadingMore={isFetchingNextPage} />}
         ListEmptyComponent={<EmptyList isLoadingComments={getCommentsLoading} />}
+        contentContainerClassName="pb-6"
       />
+      <FooterCart product={product} />
     </SafeAreaView>
   );
 };

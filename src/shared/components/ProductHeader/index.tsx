@@ -84,7 +84,7 @@ export const ProductHeader: FC<ProductHeaderParams> = ({ productDetails }) => {
             {productDetails.category.name}
           </Text>
         </View>
-        <View className="flex-row justify-between items-center py-4 border-t border-gray-200">
+        <View className="flex-row justify-between items-center pt-4 border-t border-gray-200">
           <Text className="text-lg font-bold text-gray-800">Avaliações</Text>
           <TouchableOpacity>
             <Text className="text-purple-base text-base font-medium">

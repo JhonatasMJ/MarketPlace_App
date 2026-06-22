@@ -4,6 +4,9 @@ import { useProductViewModel } from "./useProduct.viewModel";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ProductHeader } from "../../shared/components/ProductHeader";
 import { CommentItem } from "../../shared/components/CommentItem/CommentItem";
+import { ListFooter } from "../../shared/components/ListFooter/ListFooter";
+import { EmptyList } from "../../shared/components/EmptyList/EmptyList";
+import { Loading } from "../../shared/components/Loading/Loading";
 
 export const ProductView: FC<ReturnType<typeof useProductViewModel>> = ({
   product,
@@ -18,6 +21,8 @@ export const ProductView: FC<ReturnType<typeof useProductViewModel>> = ({
   handleLoadMore,
   handleRefetch,
   handleEndReached,
+  isRefetching,
+  isFetchingNextPage,
 }) => {
   if (error) {
     <Text>Erro ao carregar ao carregar os detalhes do produto</Text>;
@@ -25,6 +30,10 @@ export const ProductView: FC<ReturnType<typeof useProductViewModel>> = ({
 
   if (!product) {
     return null;
+    
+  }
+  if(isLoading) {
+    return <Loading />
   }
 
   return (
@@ -34,6 +43,11 @@ export const ProductView: FC<ReturnType<typeof useProductViewModel>> = ({
         data={comments}
         renderItem={({ item }) => <CommentItem comment={item} />}
         ListHeaderComponent={<ProductHeader productDetails={product} />}
+        onEndReached={handleEndReached}
+        onRefresh={handleRefetch}
+        refreshing={isRefetching}
+        ListFooterComponent={<ListFooter isLoadingMore={isFetchingNextPage} />}
+        ListEmptyComponent={<EmptyList isLoadingComments={getCommentsLoading} />}
       />
     </SafeAreaView>
   );

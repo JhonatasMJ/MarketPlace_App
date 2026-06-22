@@ -35,5 +35,7 @@ export const useProductViewModel = (productId:number) => {
         handleLoadMore,
         handleRefetch,
         handleEndReached,
+        isRefetching,
+        isFetchingNextPage,
     }
 }

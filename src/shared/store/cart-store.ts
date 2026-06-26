@@ -29,16 +29,16 @@ export const useCartStore = create<CartStore>()(
       products: [],
       total: 0,
       // Adiciona um produto ao carrinho
-      addProduct: (newProduct) => set((state) => {
-        const newItems = cartService.addProductToCart(state.products, newProduct)
-        return {
-          products: newItems,
-          total: 1
-        }
-      }),
-      clearCart: () =>  set({ products: [], total: 0 }),
+      addProduct: (newProduct) =>
+        set((state) =>
+          cartService.addProductToCart(state.products, newProduct),
+        ),
+      clearCart: () => set({ products: [], total: 0 }),
       getItemCount: () => 0,
-      removeProduct: () => set({}),
+      removeProduct: (productId: number) =>
+        set((state) => {
+          return cartService.removeProductFromList(state.products, productId);
+        }),
       updateQuantity: () => set({}),
     }),
     {

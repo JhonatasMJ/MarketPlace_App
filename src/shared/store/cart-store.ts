@@ -25,7 +25,7 @@ interface CartStore {
 
 export const useCartStore = create<CartStore>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       products: [],
       total: 0,
       // Adiciona um produto ao carrinho
@@ -34,12 +34,19 @@ export const useCartStore = create<CartStore>()(
           cartService.addProductToCart(state.products, newProduct),
         ),
       clearCart: () => set({ products: [], total: 0 }),
-      getItemCount: () => 0,
+      getItemCount: () => cartService.getItemCount(get().products),
       removeProduct: (productId: number) =>
         set((state) => {
           return cartService.removeProductFromList(state.products, productId);
         }),
-      updateQuantity: () => set({}),
+      updateQuantity: ({ productId, quantity }) =>
+        set((state) => {
+          return cartService.updateProductQuantity({
+            productId,
+            quantity,
+            productList: state.products,
+          });
+        }),
     }),
     {
       name: "marketplace-cart",

@@ -63,11 +63,10 @@ export const getUserComment = async (productId: number) => {
 };
 
 export const updateUserComment = async (
-  commentId: number,
   params: UpdateCommentRequest,
 ) => {
   const { data } = await marketPlaceApiClient.put<UpdateCommentResponse>(
-    `/products/comments/${commentId}`,
+    `/products/comments/${params.commentId}`,
     { content: params.content, rating: params.rating },
   );
   return data;

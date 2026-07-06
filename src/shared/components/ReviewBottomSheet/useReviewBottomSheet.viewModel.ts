@@ -3,6 +3,7 @@ import { useGetUserCommentQuery } from "../../queries/comments/user-get-use-comm
 import { useCreateCommentMutation } from "../../queries/comments/use-create-comment.mutation";
 import { useUpdateCommentMutation } from "../../queries/comments/use-update-comment.mutation";
 import { Toast } from "toastify-react-native";
+import { useBottomSheetStore } from "../../store/bottomSheet-store";
 
 interface RatingFormInterface {
   content: string;
@@ -28,6 +29,8 @@ export const useReviewBottomSheetViewModel = (productId: number) => {
   const createCommentMutation = useCreateCommentMutation(productId)
   const updateCommentMutation = useUpdateCommentMutation(productId);
 
+  const { close } = useBottomSheetStore();
+
   const handleRatingChange = (rating: number) => {
     setRatingForm((prevData) => ({
         ...prevData,
@@ -48,7 +51,7 @@ export const useReviewBottomSheetViewModel = (productId: number) => {
         return
       }
 
-      if(ratingForm.content.trim()) {
+      if(ratingForm.content.trim() === "") {
         Toast.warn("Por favor, Escreva um comentário", "top" );
         return
       }
@@ -66,11 +69,13 @@ export const useReviewBottomSheetViewModel = (productId: number) => {
           productId,
         })
       }
+      close();
   }
 
-    //Verifica se o usuário já tem um comentário para o produto
   useEffect(() => {
-    if (userComment && userComment.comment) {
+    if (loadingUserComment) return;
+
+    if (userComment?.comment) {
       setRatingForm({
         content: userComment.comment.content,
         rating: userComment.rating,
@@ -78,11 +83,14 @@ export const useReviewBottomSheetViewModel = (productId: number) => {
         commentId: userComment.comment.id,
       });
     } else {
-        setRatingForm(initialFormValue);
+      setRatingForm(initialFormValue);
     }
-  }, [userComment]);
+  }, [userComment, loadingUserComment]);
 
-  const isLoading = createCommentMutation.isPending || updateCommentMutation.isPending;
+  const isLoading =
+    loadingUserComment ||
+    createCommentMutation.isPending ||
+    updateCommentMutation.isPending;
 
   return {
     handleRatingChange,

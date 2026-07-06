@@ -66,7 +66,7 @@ export const getUserComment = async (productId: number) => {
       }
     };
     rating:number;
-  }>(`/products/${productId}/user-comment}`);
+  }>(`/products/${productId}/user-comment`);
   return data;
 };
 

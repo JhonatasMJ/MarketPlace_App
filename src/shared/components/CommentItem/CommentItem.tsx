@@ -12,11 +12,12 @@ export const CommentItem = ({ comment }: CommentItemProps) => {
   const { user } = useUserStore();
   const isCurrentUser = user?.id === comment.user.id;
 
+  const rating = comment.user.rating.value;
+
   return (
     <View className="bg-white p-4 mb-3 rounded-lg shadow-sm">
-      <View className="flex-row items-center justify-between mb-3"></View>
-      <View className="flex-row items-center flex-1">
-        <View className="w-8 h-8 rounded-md overflow-hidden bg-gray-200 mr-3">
+      <View className="flex-row items-center justify-between mb-2">
+        <View className="w-8 h-8 rounded-md overflow-hidden bg-gray-200">
           {comment.user.avatar.url && comment.user.avatar.url !== "" ? (
             <Image
               source={{ uri: comment.user.avatar.url }}
@@ -28,26 +29,33 @@ export const CommentItem = ({ comment }: CommentItemProps) => {
               <Ionicons name="person" size={20} color={colors.gray[400]} />
             </View>
           )}
-          <View className="flex-row items-center flex-1 ml-2">
-            <Text className="text-base font-medium text-gray-800">
-              {comment.user.name}
-            </Text>
-            {isCurrentUser && (
-              <View className="bg-blue-base px-2 py-1 rounded-full">
-                <Text className="text-xs font-bold text-white">Você</Text>
-              </View>
-            )}
-          </View>
+        </View>
+        <View className="flex-row items-center gap-0.5">
+          {Array.from({ length: 5 }, (_, index) => {
+            const starNumber = index + 1;
+            const isSelected = starNumber <= rating;
+            return (
+              <Ionicons
+                key={`comment-star-${starNumber}`}
+                name={isSelected ? "star" : "star-outline"}
+                size={16}
+                color={isSelected ? colors["purple-base"] : colors.gray[200]}
+              />
+            );
+          })}
         </View>
       </View>
-      <View className="flex-row items-end">
-        <Ionicons name="star" size={16} color={colors["purple-base"]} />
-        <Text className="text-sm font-bold text-gray-600">
-          {comment.user.rating.value} /{" "}
-          <Text className="text-[10px] text-gray-600">5</Text>
+      <View className="flex-row items-center gap-2 mb-3">
+        <Text className="text-base font-medium text-gray-800">
+          {comment.user.name}
         </Text>
+        {isCurrentUser && (
+          <View className="bg-blue-base px-2 py-1 rounded-full">
+            <Text className="text-xs font-bold text-white">Você</Text>
+          </View>
+        )}
       </View>
-      <Text> {comment.content}</Text>
+      <Text className="text-gray-600">{comment.content}</Text>
     </View>
   );
 };

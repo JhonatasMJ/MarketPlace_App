@@ -12,6 +12,7 @@ import { useAppInputViewModel } from "./useAppInputViewModel";
 
 export interface InputProps extends TextInputProps, InputVariantsProps {
   label?: string;
+  labelClassName?: string;
   leftIcon?: keyof typeof Ionicons.glyphMap;
   containerClassName?: string;
   mask?: (value: string) => void | string;
@@ -22,6 +23,7 @@ export interface InputProps extends TextInputProps, InputVariantsProps {
 
 export function Input({
   label,
+  labelClassName,
   leftIcon,
   containerClassName,
   className,
@@ -29,6 +31,7 @@ export function Input({
   value,
   isError,
   secureTextEntry = false,
+  multiline,
   onFocus,
   onBlur,
   onChangeText,
@@ -61,8 +64,12 @@ export function Input({
   });
   return (
     <View className={styles.container({ className: containerClassName })}>
-      <Text className={styles.label()}>{label}</Text>
-      <Pressable className={styles.wrapper()}>
+      <Text className={styles.label({ className: labelClassName })}>{label}</Text>
+      <Pressable
+        className={styles.wrapper({
+          className: multiline ? "items-start" : undefined,
+        })}
+      >
         {leftIcon && (
           <Ionicons color={getIconColor()} className='mr-3' name={leftIcon} size={22}  />
         )}
@@ -72,6 +79,8 @@ export function Input({
           onBlur={handleBlur}
           onChangeText={handleTextChange}
           secureTextEntry={showPassword}
+          multiline={multiline}
+          textAlignVertical={multiline ? "top" : "center"}
           className={styles.input({ className: className })}
           {...props}
         />

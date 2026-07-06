@@ -12,7 +12,7 @@ export const Stars = ({ rating, handleChangeRating }: StarsParams) => {
     const startNumber = index + 1;
     const isSelected = startNumber <= rating;
     return (
-      <TouchableOpacity onPress={() => handleChangeRating(startNumber)}>
+      <TouchableOpacity key={`rating-star-${startNumber}`} onPress={() => handleChangeRating(startNumber)}>
         <Ionicons
           name={isSelected ? "star" : "star-outline"}
           size={32}

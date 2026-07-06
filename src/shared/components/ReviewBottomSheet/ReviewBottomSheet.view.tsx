@@ -40,7 +40,7 @@ export const ReviewBottomSheetView: FC<
         </View>
       ) : (
         <View className="p-6">
-          <Text className="font-semibold text-base text-gray-300">Nota</Text>
+          <Text className="font-semibold text-base text-gray-800">Nota</Text>
           <View className="flex-row items-center mb-6 gap-2">
             <Stars
               rating={ratingForm.rating}
@@ -49,6 +49,7 @@ export const ReviewBottomSheetView: FC<
           </View>
           <Input
             label="Comentário"
+            labelClassName="text-base font-semibold text-gray-800"
             onChangeText={handleContentChange}
             placeholder={
               ratingForm.isEdit

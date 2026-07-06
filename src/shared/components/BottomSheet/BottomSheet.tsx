@@ -40,10 +40,17 @@ export const AppBottomSheet = () => {
     index={0}
     snapPoints={snapPoints}
     enablePanDownToClose={config?.enablePanDownToClose ?? true}
+    keyboardBehavior="interactive"
+    android_keyboardInputMode="adjustResize"
     animateOnMount
     onChange={handleSheetChange}
     >
-      <BottomSheetScrollView>{content}</BottomSheetScrollView>
+      <BottomSheetScrollView
+        keyboardShouldPersistTaps="handled"
+        contentContainerStyle={{ paddingBottom: 2 }}
+      >
+        {content}
+      </BottomSheetScrollView>
     </BottomSheet>
   );
 };

@@ -76,7 +76,7 @@ export const useProductViewModel = (productId: number) => {
         productId
       }),
       config: {
-        snapPoints: ["50%"],
+        snapPoints: ["85%"],
       },
      });
   }

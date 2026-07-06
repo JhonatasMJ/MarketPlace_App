@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { ActivityIndicator, Text, TouchableOpacity, View } from "react-native";
 import { useReviewBottomSheetViewModel } from "./useReviewBottomSheet.viewModel";
 import { Ionicons } from "@expo/vector-icons";
 import { colors } from "../../../styles/colors";
@@ -10,7 +10,13 @@ import { useBottomSheetStore } from "../../store/bottomSheet-store";
 
 export const ReviewBottomSheetView: FC<
   ReturnType<typeof useReviewBottomSheetViewModel>
-> = ({ handleRatingChange, handleContentChange, ratingForm }) => {
+> = ({
+  handleRatingChange,
+  handleContentChange,
+  ratingForm,
+  handleFormSubmit,
+  isLoading,
+}) => {
   const { close } = useBottomSheetStore();
   return (
     <View className="bg-background rounded-t-2xl">
@@ -25,38 +31,49 @@ export const ReviewBottomSheetView: FC<
           <Ionicons name="close" size={24} color={colors.gray[400]} />
         </TouchableOpacity>
       </View>
-      <View className="p-6">
-        <Text className="font-semibold text-base text-gray-300">Nota</Text>
-        <View className="flex-row items-center mb-6 gap-2">
-          <Stars
-            rating={ratingForm.rating}
-            handleChangeRating={handleRatingChange}
+      {isLoading ? (
+        <View className="p-6 items-center justify-center min-h-[300px]">
+          <ActivityIndicator size="large" color={colors["purple-base"]} />
+          <Text className="text-gray-600 mt-4 text-center">
+            Verificando avaliação existente...
+          </Text>
+        </View>
+      ) : (
+        <View className="p-6">
+          <Text className="font-semibold text-base text-gray-300">Nota</Text>
+          <View className="flex-row items-center mb-6 gap-2">
+            <Stars
+              rating={ratingForm.rating}
+              handleChangeRating={handleRatingChange}
+            />
+          </View>
+          <Input
+            label="Comentário"
+            onChangeText={handleContentChange}
+            placeholder={
+              ratingForm.isEdit
+                ? "Edite seu comentário"
+                : "Descreva sua avaliação"
+            }
+            value={ratingForm.content}
+            multiline
+            numberOfLines={8}
+            textAlign="left"
+            containerClassName="mb-8"
+            className="h-[150px]"
           />
-        </View>
-        <Input
-          label="Comentário"
-          onChangeText={handleContentChange}
-          placeholder={
-            ratingForm.isEdit
-              ? "Edite seu comentário"
-              : "Descreva sua avaliação"
-          }
-          value={ratingForm.content}
-          multiline
-          numberOfLines={8}
-          textAlign="left"
-          containerClassName="mb-8"
-          className="h-[150px]"
-        />
-        <View className="flex-row gap-3 mb-8">
-          <View className="flex-1">
-            <Button variant="outlined">Cancelar</Button>
-          </View>
-          <View className="flex-1">
-            <Button>{ratingForm.isEdit ? "Atualizar" : "Enviar"}</Button>
+          <View className="flex-row gap-3 mb-8">
+            <View className="flex-1">
+              <Button variant="outlined">Cancelar</Button>
+            </View>
+            <View className="flex-1">
+              <Button onPress={handleFormSubmit}>
+                {ratingForm.isEdit ? "Atualizar" : "Enviar"}
+              </Button>
+            </View>
           </View>
         </View>
-      </View>
+      )}
     </View>
   );
 };

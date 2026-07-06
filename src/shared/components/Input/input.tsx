@@ -39,7 +39,6 @@ export function Input({
   const {
     getIconColor,
     handlePasswordToggle,
-    handleWrapperFocus,
     handleFocus,
     handleBlur,
     handleTextChange,

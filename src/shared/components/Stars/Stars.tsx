@@ -4,14 +4,15 @@ import { colors } from "../../../styles/colors";
 
 interface StarsParams {
   rating: number;
+  handleChangeRating: (rating: number) => void;
 }
 
-export const Stars = ({ rating }: StarsParams) => {
+export const Stars = ({ rating, handleChangeRating }: StarsParams) => {
   return Array.from({ length: 5 }, (_, index) => {
     const startNumber = index + 1;
     const isSelected = startNumber <= rating;
     return (
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => handleChangeRating(startNumber)}>
         <Ionicons
           name={isSelected ? "star" : "star-outline"}
           size={32}

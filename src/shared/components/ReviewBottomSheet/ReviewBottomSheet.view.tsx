@@ -65,7 +65,7 @@ export const ReviewBottomSheetView: FC<
           />
           <View className="flex-row gap-3 mb-8">
             <View className="flex-1">
-              <Button variant="outlined">Cancelar</Button>
+              <Button onPress={close} variant="outlined">Cancelar</Button>
             </View>
             <View className="flex-1">
               <Button onPress={handleFormSubmit}>

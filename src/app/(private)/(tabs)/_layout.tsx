@@ -28,7 +28,7 @@ export default function TabsLayout() {
         }}
       />
       <Tabs.Screen
-        name="cart"
+        name="orders"
         options={{
           title: "PEDIDOS",
           tabBarActiveTintColor: colors["purple-base"],
@@ -41,20 +41,20 @@ export default function TabsLayout() {
           },
         }}
       />
-      <Tabs.Screen
-        name="orders"
-        options={{
-          title: "CARRINHO",
-          tabBarActiveTintColor: colors["purple-base"],
-          tabBarIcon: ({ color }) => (
-            <Ionicons name="cart-outline" color={color} size={25} />
-          ),
-          tabBarLabelStyle: {
-            fontSize: 14,
-            marginTop: 4,
-          },
-        }}
-      />
+        <Tabs.Screen
+          name="cart"
+          options={{
+            title: "CARRINHO",
+            tabBarActiveTintColor: colors["purple-base"],
+            tabBarIcon: ({ color }) => (
+              <Ionicons name="cart-outline" color={color} size={25} />
+            ),
+            tabBarLabelStyle: {
+              fontSize: 14,
+              marginTop: 4,
+            },
+          }}
+        />
     </Tabs>
   );
 }

@@ -4,8 +4,13 @@ import { Ionicons } from "@expo/vector-icons";
 import { colors } from "../../../styles/colors";
 import { Button } from "../Button/Button";
 import { useCartStore } from "../../store/cart-store";
+import { FC } from "react";
 
-export const CartFooter = () => {
+interface CartFooterProps {
+  openCartBottomSheet: () => void;
+}
+
+export const CartFooter: FC<CartFooterProps> = ({openCartBottomSheet}) => {
   const {total} = useCartStore()
   return (
     <View className="bg-white p-4 rounded-lg mt-6">
@@ -33,7 +38,7 @@ export const CartFooter = () => {
             </Text>
           </TouchableOpacity>
         </View>
-       <Button className="mt-4">
+       <Button className="mt-4" onPress={openCartBottomSheet}>
         Confirmar compra
        </Button>
       </View>

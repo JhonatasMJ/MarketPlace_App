@@ -8,7 +8,8 @@ import { CartHeader } from "../../shared/components/CartHeader/CartHeader"
 import { CartFooter } from "../../shared/components/CartFooter/CartFooter"
 
 export const CartView:FC <ReturnType<typeof useCartViewModel>>= ({
-    products
+    products,
+    openCartBottomSheet
 }) => {
     return (
         <SafeAreaView>
@@ -19,7 +20,7 @@ export const CartView:FC <ReturnType<typeof useCartViewModel>>= ({
             keyExtractor={(id) => `product-cart-id${id}`}
             ListEmptyComponent={<EmptyListCart />}
             ListHeaderComponent={<CartHeader />}
-            ListFooterComponent={products.length > 0 ? <CartFooter /> :null}
+            ListFooterComponent={products.length > 0 ? <CartFooter openCartBottomSheet={openCartBottomSheet} /> :null}
             />
         </SafeAreaView>
     )

@@ -29,7 +29,7 @@ export const ModalCart = ({
          Foi adicionado ao seu carrinho com sucesso!
       </Text>
       <View className="gap-3">
-        <Button onPress={onGoToCart} leftIcon="cart" >
+        <Button onPress={onGoToCart}>
             Ver Carrinho
         </Button>
         <Button variant="outlined" onPress={onContinueShopping}>

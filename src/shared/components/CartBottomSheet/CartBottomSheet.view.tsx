@@ -5,10 +5,18 @@ import { Ionicons } from "@expo/vector-icons";
 import { colors } from "../../../styles/colors";
 import { Input } from "../Input/Input";
 import { Button } from "../Button/Button";
+import { InputController } from "../InputController/InputController";
 
 export const CartBottomSheetView: FC<
   ReturnType<typeof useCartBottomSheetViewModel>
-> = ({handleCreateCreditCard}) => {
+> = ({
+  handleCreateCreditCard,
+  control,
+  handleSubmit,
+  reset,
+  watch,
+  clearErrors,
+}) => {
   return (
     <ScrollView className="flex-1">
       <View className="p-8">
@@ -21,15 +29,27 @@ export const CartBottomSheetView: FC<
           </TouchableOpacity>
         </View>
         <View className="mt-6 gap-4">
-          <Input
+          <InputController
+            control={control}
+            name="titularName"
             leftIcon="person-outline"
             label="NOME DO TITULAR"
             placeholder="Nome Completo"
           />
 
+          <InputController
+            control={control}
+            name="number"
+            leftIcon="card-outline"
+            label="NÚMERO"
+            placeholder="Número do cartão"
+          />
+
           <View className="flex-row gap-2">
             <View className="flex-1">
-              <Input
+              <InputController
+                control={control}
+                name="expirationDate"
                 leftIcon="calendar-outline"
                 label="VENCIMENTO"
                 placeholder="MM/AA"
@@ -38,7 +58,9 @@ export const CartBottomSheetView: FC<
               />
             </View>
             <View className="flex-1">
-              <Input
+              <InputController
+                control={control}
+                name="CVV"
                 leftIcon="lock-closed-outline"
                 label="CVV"
                 placeholder="000"

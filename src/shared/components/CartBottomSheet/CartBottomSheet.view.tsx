@@ -16,6 +16,8 @@ export const CartBottomSheetView: FC<
   reset,
   watch,
   clearErrors,
+  expirationDateMask,
+  cardNumberMask,
 }) => {
   return (
     <ScrollView className="flex-1">
@@ -43,6 +45,8 @@ export const CartBottomSheetView: FC<
             leftIcon="card-outline"
             label="NÚMERO"
             placeholder="Número do cartão"
+            mask={cardNumberMask}
+            maxLength={19}
           />
 
           <View className="flex-row gap-2">
@@ -55,6 +59,7 @@ export const CartBottomSheetView: FC<
                 placeholder="MM/AA"
                 keyboardType="numeric"
                 maxLength={5}
+                mask={expirationDateMask}
               />
             </View>
             <View className="flex-1">

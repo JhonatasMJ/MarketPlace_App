@@ -1,4 +1,4 @@
-export interface GetCreditCardResponse {
+export interface GetCreditCard {
     id: number;
     userId: number;
     titularName: string;

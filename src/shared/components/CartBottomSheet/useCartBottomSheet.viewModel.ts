@@ -1,5 +1,16 @@
+import { useCreateCreditCardMutation } from "../../queries/credit-cards/use-create-credit-card.mutation";
+
 export const useCartBottomSheetViewModel = () => {
-    return {
-        
-    }
-}
+  const createCreditCardMutation = useCreateCreditCardMutation();
+
+  const handleCreateCreditCard = () => {
+    createCreditCardMutation.mutate({
+      CVV: 123,
+      expirationDate: "",
+      number: "",
+    });
+  };
+  return {
+    handleCreateCreditCard,
+  };
+};

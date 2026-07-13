@@ -1,17 +1,24 @@
-import { Text, TouchableOpacity, View } from "react-native";
+import { ActivityIndicator, FlatList, Text, TouchableOpacity, View } from "react-native";
 import { PriceText } from "../PriceText";
 import { Ionicons } from "@expo/vector-icons";
 import { colors } from "../../../styles/colors";
 import { Button } from "../Button/Button";
 import { useCartStore } from "../../store/cart-store";
 import { FC } from "react";
+import { GetCreditCard } from "../../interfaces/credit-card";
 
 interface CartFooterProps {
   openCartBottomSheet: () => void;
+  creditCards: GetCreditCard[];
+  loadingCreditCards: boolean;
 }
 
-export const CartFooter: FC<CartFooterProps> = ({openCartBottomSheet}) => {
-  const {total} = useCartStore()
+export const CartFooter: FC<CartFooterProps> = ({
+  openCartBottomSheet,
+  creditCards,
+  loadingCreditCards,
+}) => {
+  const { total } = useCartStore();
   return (
     <View className="bg-white p-4 rounded-lg mt-6">
       <View className="flex-row justify-between items-center mb-4">
@@ -38,9 +45,21 @@ export const CartFooter: FC<CartFooterProps> = ({openCartBottomSheet}) => {
             </Text>
           </TouchableOpacity>
         </View>
-       <Button className="mt-4" onPress={openCartBottomSheet}>
-        Confirmar compra
-       </Button>
+        {loadingCreditCards ? (
+          <View className="py-4 items-center">
+            <ActivityIndicator size="small" color={colors["purple-base"]} />
+            <Text className="text-sm text-gray-500 mt-2">Carregando cartões</Text>
+          </View>
+        ) : (
+          <FlatList
+            data={creditCards}
+            renderItem={({ item }) => <Text>{item.titularName}</Text>}
+          />
+        )}
+
+        <Button className="mt-4" onPress={openCartBottomSheet}>
+          Confirmar compra
+        </Button>
       </View>
     </View>
   );

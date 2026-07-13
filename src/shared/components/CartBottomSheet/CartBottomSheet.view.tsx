@@ -8,7 +8,7 @@ import { Button } from "../Button/Button";
 
 export const CartBottomSheetView: FC<
   ReturnType<typeof useCartBottomSheetViewModel>
-> = ({}) => {
+> = ({handleCreateCreditCard}) => {
   return (
     <ScrollView className="flex-1">
       <View className="p-8">

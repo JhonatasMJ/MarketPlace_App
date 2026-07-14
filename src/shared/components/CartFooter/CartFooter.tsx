@@ -6,6 +6,7 @@ import { Button } from "../Button/Button";
 import { useCartStore } from "../../store/cart-store";
 import { FC } from "react";
 import { GetCreditCard } from "../../interfaces/credit-card";
+import { CreditCardItem } from "../CreditCardItem/CreditCardItem";
 
 interface CartFooterProps {
   openCartBottomSheet: () => void;
@@ -17,6 +18,7 @@ export const CartFooter: FC<CartFooterProps> = ({
   openCartBottomSheet,
   creditCards,
   loadingCreditCards,
+
 }) => {
   const { total } = useCartStore();
   return (
@@ -52,8 +54,9 @@ export const CartFooter: FC<CartFooterProps> = ({
           </View>
         ) : (
           <FlatList
+          className="gap-2"
             data={creditCards}
-            renderItem={({ item }) => <Text>{item.titularName}</Text>}
+            renderItem={({ item }) => <CreditCardItem  creditCard={item} />}
           />
         )}
 

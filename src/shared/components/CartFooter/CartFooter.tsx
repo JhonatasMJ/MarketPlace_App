@@ -6,7 +6,7 @@ import { Button } from "../Button/Button";
 import { useCartStore } from "../../store/cart-store";
 import { FC } from "react";
 import { GetCreditCard } from "../../interfaces/credit-card";
-import { CreditCardItem } from "../CreditCardItem/CreditCardItem";
+import { CreditCardItem } from "../CreditCardItem";
 
 interface CartFooterProps {
   openCartBottomSheet: () => void;

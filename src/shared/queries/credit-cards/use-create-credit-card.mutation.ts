@@ -13,7 +13,7 @@ export const useCreateCreditCardMutation = () => {
     onSuccess: (response) => {
       Toast.success(response.message ?? "Cartão criado com sucesso");
         //Se tivermos uma query ativa, vamos invalidar ela, para que o tanstack query recarregue os dados, assim atualizando o cache.
-      queryClient.cancelQueries({ queryKey: ["credit-cards"] });
+      queryClient.invalidateQueries({ queryKey: ["credit-cards"] });
     },
   });
 

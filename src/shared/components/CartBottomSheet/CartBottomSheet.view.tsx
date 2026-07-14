@@ -80,7 +80,7 @@ export const CartBottomSheetView: FC<
             <Button variant="outlined">Cancelar</Button>
           </View>
           <View className="flex-1">
-            <Button>Salvar</Button>
+            <Button onPress={handleCreateCreditCard}>Salvar</Button>
           </View>
         </View>
       </View>

@@ -3,11 +3,13 @@ import { useCartStore } from "../../store/cart-store";
 import { GetCreditCard } from "../../interfaces/credit-card";
 import { useSubmitOrderMutation } from "../../queries/orders/use-submit-order.mutation";
 import { router } from "expo-router";
+import { useModal } from "../../hooks/useModal";
 
 export const useCartFooterViewModel = () => {
   const { total, products, clearCart } = useCartStore();
   const [selectedCreditCard, setSelectedCreditCard] =
     useState<null | GetCreditCard>(null);
+    const { showSuccess } = useModal();
 
     const createOrderMutation = useSubmitOrderMutation();
 
@@ -23,7 +25,14 @@ export const useCartFooterViewModel = () => {
         })),
       })
       clearCart();
-      router.push("/orders")
+      showSuccess({
+        title: "Sucesso",
+        message: "Pedido Feito com Sucesso.",
+        buttonText: "Ver Pedidos",
+        onButtonPress: () => {
+          router.push("/orders");
+        },
+      });
     }
 
   return {

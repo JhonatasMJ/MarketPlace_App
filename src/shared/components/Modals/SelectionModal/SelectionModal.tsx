@@ -1,8 +1,8 @@
 import { Text, TouchableOpacity, View } from "react-native";
-import { SelectionOptions, SelectionVariants } from "../../hooks/useModal";
+import { SelectionOptions, SelectionVariants } from "../../../hooks/useModal";
 import { Ionicons } from "@expo/vector-icons";
 import clsx from "clsx";
-import { colors } from "../../../styles/colors";
+import { colors } from "../../../../styles/colors";
 
 export interface SelectionModalProps {
   title: string;

@@ -5,7 +5,7 @@ import { SafeAreaView } from "react-native-safe-area-context"
 import { CartCard } from "../../shared/components/CartCard";
 import { EmptyListCart } from "../../shared/components/EmptyListCart/EmptyListCart"
 import { CartHeader } from "../../shared/components/CartHeader/CartHeader"
-import { CartFooter } from "../../shared/components/CartFooter/CartFooter"
+import { CartFooter } from "../../shared/components/CartFooter/CartFooter.view"
 
 export const CartView:FC <ReturnType<typeof useCartViewModel>>= ({
     products,

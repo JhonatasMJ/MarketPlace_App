@@ -3,10 +3,10 @@ import { useGetCommentsInfiniteQuery } from "../../shared/queries/product/use-ge
 import { useGetProductDetails } from "../../shared/queries/product/use-get-product-details";
 import { useCartStore } from "../../shared/store/cart-store";
 import { useModalStore } from "../../shared/store/modal-store";
-import { ModalCart } from "../../shared/components/ModalCart/ModalCart";
 import { router } from "expo-router";
 import { useBottomSheetStore } from "../../shared/store/bottomSheet-store";
 import { ReviewBottomSheet } from "../../shared/components/ReviewBottomSheet";
+import { ModalCart } from "../../shared/components/Modals/ModalCart/ModalCart";
 
 export const useProductViewModel = (productId: number) => {
   const { data: product, isLoading, error } = useGetProductDetails(productId);

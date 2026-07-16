@@ -9,7 +9,7 @@ export const useSubmitOrderMutation = () => {
     mutationFn: submitOrder,
     onSuccess: (response) => {
       Toast.success(response.message ?? "Pedido realizado com sucesso");
-      queryClient.invalidateQueries({ queryKey: ["orders"] });
+      queryClient.invalidateQueries({ queryKey: ["user-orders"] });
     },
     onError: (error) => {
       Toast.error(error.message ?? "Erro ao realizar pedido");

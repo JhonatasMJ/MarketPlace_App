@@ -9,12 +9,11 @@ export interface OrdersRequestParams {
 export interface SubmitOrderResponse {
   message: string;
   orderCounts: 0;
-  orders: [
-    {
-      id: number;
-      productId: number;
-      quantity: number;
-      totalPrice: number;
-    },
-  ];
+  orders:
+  {
+    id: number;
+    productId: number;
+    quantity: number;
+    totalPrice: number;
+  }[];
 }

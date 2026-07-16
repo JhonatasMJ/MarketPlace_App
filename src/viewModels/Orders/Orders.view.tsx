@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { useOrdersViewModel } from "./useOrders.viewModel";
-import { FlatList, Text, View } from "react-native";
+import { FlatList} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { OrderItem } from "../../shared/components/OrderItem/OrderItem";
 

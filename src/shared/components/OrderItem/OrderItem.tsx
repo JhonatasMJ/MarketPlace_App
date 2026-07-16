@@ -1,6 +1,8 @@
 import { Image, Text, View } from "react-native";
 import { OrderInterface } from "../../interfaces/order";
 import { buildImageUrl } from "../../helpers/buildImageUrl";
+import { format } from "date-fns";
+import { PriceText } from "../PriceText";
 
 interface OrderItemProps {
   order: OrderInterface;
@@ -25,10 +27,22 @@ export const OrderItem = ({ order }: OrderItemProps) => {
           >
             {order.productName}
           </Text>
-          <Text>{order.createdAt.toString()}</Text>
+          <Text className="text-sm text-gray-600">
+            {format(order.createdAt, "dd/MM/yyyy")}
+          </Text>
         </View>
-        <Text>{order.quantity} - {order.totalPrice}</Text>
-        <Text>{order.creditCard.maskedNumber}</Text>
+        <View className="flex-row">
+          <Text className="text-sm text-gray-600 mb-1"></Text>
+          {order.quantity} {order.quantity > 1 ? "Unidades" : "Unidade"} •{" "}
+          <PriceText
+            classNameCurrency="text-sm text-gray-600"
+            classNameValue="text-sm text-gray-600"
+            value={order.totalPrice}
+          />
+        </View>
+        <Text className="text-sm text-gray-600">
+          Cartão final {order.creditCard.maskedNumber.slice(-4)}
+        </Text>
       </View>
     </View>
   );

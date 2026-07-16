@@ -2,13 +2,13 @@ import { FC } from "react";
 import { FlatList, Text, View } from "react-native";
 import { useProductViewModel } from "./useProduct.viewModel";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { ProductHeader } from "../../shared/components/ProductHeader";
-import { CommentItem } from "../../shared/components/CommentItem/CommentItem";
-import { ListFooter } from "../../shared/components/ListFooter/ListFooter";
-import { EmptyList } from "../../shared/components/EmptyList/EmptyList";
+import { ProductHeader } from "./components/ProductHeader";
+import { CommentItem } from "./components/CommentItem/CommentItem";
+import { ListFooter } from "./components/ListFooter/ListFooter";
+import { EmptyList } from "./components/EmptyList/EmptyList";
 import { Loading } from "../../shared/components/Loading/Loading";
 import { Error } from "../../shared/components/Error/Error";
-import { FooterCart } from "../../shared/components/FooterCart/FooterCart";
+import { FooterCart } from "./components/FooterCart/FooterCart";
 
 export const ProductView: FC<ReturnType<typeof useProductViewModel>> = ({
   product,

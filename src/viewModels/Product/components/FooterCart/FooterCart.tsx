@@ -1,0 +1,20 @@
+import { Text, View } from "react-native"
+import { ProductInterface } from "../../../../shared/interfaces/product"
+import { PriceText } from "../../../../shared/components/PriceText"
+import { Button } from "../../../../shared/components/Button/Button"
+
+interface FooterCartParams {
+    product: ProductInterface
+    handleAddToCart: () => void
+}
+
+export const FooterCart = ({ product, handleAddToCart }: FooterCartParams) => {
+    return (
+        <View className="fixed bg-white bottom-0 right-0 left-0 p-7 h-[126px] flex-row justify-between items-center">
+                <PriceText value={Number(product.value)} />
+            <Button className="w-[120px] h-[40px] rounded-md" leftIcon="cart" onPress={handleAddToCart}>
+                Adicionar
+            </Button>
+        </View>
+    )
+}

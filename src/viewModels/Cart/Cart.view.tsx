@@ -2,10 +2,10 @@ import { FC } from "react"
 import { FlatList, Text, View } from "react-native"
 import { useCartViewModel } from "./useCart.viewModel"
 import { SafeAreaView } from "react-native-safe-area-context"
-import { CartCard } from "../../shared/components/CartCard";
-import { EmptyListCart } from "../../shared/components/EmptyListCart/EmptyListCart"
-import { CartHeader } from "../../shared/components/CartHeader/CartHeader"
-import { CartFooter } from "../../shared/components/CartFooter/CartFooter.view"
+import { CartCard } from "./components/CartCard";
+import { EmptyListCart } from "./components/EmptyListCart/EmptyListCart"
+import { CartHeader } from "./components/CartHeader/CartHeader"
+import { CartFooter } from "./components/CartFooter"
 
 export const CartView:FC <ReturnType<typeof useCartViewModel>>= ({
     products,

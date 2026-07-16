@@ -5,8 +5,8 @@ import { useCartStore } from "../../shared/store/cart-store";
 import { useModalStore } from "../../shared/store/modal-store";
 import { router } from "expo-router";
 import { useBottomSheetStore } from "../../shared/store/bottomSheet-store";
-import { ReviewBottomSheet } from "../../shared/components/ReviewBottomSheet";
-import { ModalCart } from "../../shared/components/Modals/ModalCart/ModalCart";
+import { ReviewBottomSheet } from "./components/ReviewBottomSheet";
+import { ModalCart } from "./components/ModalCart/ModalCart";
 
 export const useProductViewModel = (productId: number) => {
   const { data: product, isLoading, error } = useGetProductDetails(productId);

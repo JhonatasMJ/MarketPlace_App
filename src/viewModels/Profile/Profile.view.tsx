@@ -8,6 +8,7 @@ import { InputController } from "../../shared/components/InputController/InputCo
 import { Ionicons } from "@expo/vector-icons";
 import { Button } from "../../shared/components/Button/Button";
 import { router } from "expo-router";
+import { Header } from "./components/Header/Header";
 
 export const ProfileView: FC<ReturnType<typeof useProfileViewModel>> = ({
   control,
@@ -18,11 +19,8 @@ export const ProfileView: FC<ReturnType<typeof useProfileViewModel>> = ({
   return (
     <KeyboardContainer>
       <ScrollView className="flex-1  px-[40px]">
-        <FormHeader
-          title="Crie sua conta"
-          subtitle="Informe seus dados pessoais e de acesso"
-        />
-        <TouchableOpacity className="w-[120px] h-[120px] rounded-md items-center justify-center bg-shape self-center">
+        <Header />
+        <TouchableOpacity className="w-[120px] h-[120px] rounded-md items-center justify-center bg-shape self-center mt-6">
           {avatarUri ? (
             <Image
               source={{ uri: avatarUri }}
@@ -33,6 +31,7 @@ export const ProfileView: FC<ReturnType<typeof useProfileViewModel>> = ({
             <Ionicons name="cloud-upload-outline" size={32} color="gray" />
           )}
         </TouchableOpacity>
+        <Text className="text-base mt-6 font-bold text-gray-500">Dados Pessoais</Text>
         <InputController
           control={control}
           name="name"

@@ -12,7 +12,7 @@ export type SelectionVariants = "primary" | "secondary" | "danger";
 export interface SelectionOptions {
   text: string;
   onPress: () => void;
-  icon: keyof typeof Ionicons.glyphMap;
+  icon?: keyof typeof Ionicons.glyphMap;
   variant?: SelectionVariants;
 }
 

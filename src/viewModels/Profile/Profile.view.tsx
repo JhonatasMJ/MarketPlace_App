@@ -16,11 +16,12 @@ export const ProfileView: FC<ReturnType<typeof useProfileViewModel>> = ({
   avatarUri,
   errors,
   isSubmitting,
+  handleLogout,
 }) => {
   return (
     <KeyboardContainer>
       <ScrollView className="flex-1  px-[40px]">
-        <Header />
+        <Header handleLogout={handleLogout} />
         <TouchableOpacity className="w-[120px] h-[120px] rounded-md items-center justify-center bg-shape self-center mt-6">
           {avatarUri ? (
             <Image

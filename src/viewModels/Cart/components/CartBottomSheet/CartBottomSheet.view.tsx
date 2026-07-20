@@ -3,19 +3,15 @@ import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { useCartBottomSheetViewModel } from "./useCartBottomSheet.viewModel";
 import { Ionicons } from "@expo/vector-icons";
 import { colors } from "../../../../styles/colors";
-import { Input } from "../../../../shared/components/Input/Input";
 import { Button } from "../../../../shared/components/Button/Button";
 import { InputController } from "../../../../shared/components/InputController/InputController";
+import { CreditCard } from "./components/CreditCard";
 
 export const CartBottomSheetView: FC<
   ReturnType<typeof useCartBottomSheetViewModel>
 > = ({
   handleCreateCreditCard,
   control,
-  handleSubmit,
-  reset,
-  watch,
-  clearErrors,
   expirationDateMask,
   cardNumberMask,
 }) => {
@@ -29,6 +25,8 @@ export const CartBottomSheetView: FC<
           <TouchableOpacity className="w-8 h-8 items-center justify-center border border-gray-400 rounded-md">
             <Ionicons name="close" size={24} color={colors.gray[400]} />
           </TouchableOpacity>
+
+          <CreditCard/>
         </View>
         <View className="mt-6 gap-4">
           <InputController

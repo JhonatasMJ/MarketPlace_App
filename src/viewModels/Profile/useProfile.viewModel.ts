@@ -10,17 +10,25 @@ import { useUpdateProfileMutation } from "../../shared/queries/profile/use-updat
 import { useModal } from "../../shared/hooks/useModal";
 import { useModalStore } from "../../shared/store/modal-store";
 import { useCartStore } from "../../shared/store/cart-store";
+import { useImage } from "../../shared/hooks/useImage";
+import { CameraType } from "expo-image-picker";
+import { useUploadAvatarMutation } from "../../shared/queries/auth/use-upload-avatar.mutation";
 
 export const useProfileViewModel = () => {
   const { user, logout } = useUserStore();
-  const [avatarUri, setAvatarUri] = useState<string | null>(
-    user?.avatarUrl ?? null,
-  );
-
   const { close } = useModalStore();
   const updateProfileMutation = useUpdateProfileMutation();
   const { showSelection } = useModal();
-  const {clearCart} = useCartStore();
+  const { clearCart } = useCartStore();
+  const uploadAvatarMutation = useUploadAvatarMutation();
+  const { handleSelectImage } = useImage({
+    callback: async (uri) => {
+      if (uri) {
+          await uploadAvatarMutation.mutateAsync(uri);
+      }
+    },
+    cameraType: CameraType.front,
+  });
 
   const {
     control,
@@ -68,9 +76,9 @@ export const useProfileViewModel = () => {
         {
           variant: "danger",
           onPress: () => {
-            close();
             clearCart();
             logout();
+            close();
           },
           text: "Sair",
         },
@@ -80,9 +88,10 @@ export const useProfileViewModel = () => {
   return {
     control,
     onSubmit,
-    avatarUri,
     errors,
     isSubmitting,
     handleLogout,
+    avatarUri: user?.avatarUrl ?? null,
+    handleSelectImage,
   };
 };

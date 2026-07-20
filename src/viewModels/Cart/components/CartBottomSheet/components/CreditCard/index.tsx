@@ -1,9 +1,15 @@
+import { FocusedField } from "../../useCartBottomSheet.viewModel";
 import { CreditCardView } from "./CreditCard.view";
 import { useCreditCardViewModel } from "./useCreditCard.viewModel";
 
-export const CreditCard = () => {
+interface CreditCardProps {
+    isFlipped: boolean;
+    focusedField: FocusedField | null;
+}
 
-    const viewModel = useCreditCardViewModel();
+export const CreditCard = ({ isFlipped, focusedField }: CreditCardProps) => {
 
-    return <CreditCardView {...viewModel} />
+    const viewModel = useCreditCardViewModel(isFlipped);
+
+    return <CreditCardView {...viewModel} focusedField={focusedField} />
 }

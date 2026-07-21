@@ -18,6 +18,7 @@ export const CartBottomSheetView: FC<
   handleFieldBlur,
   isFlipped,
   focusedField,
+  cardData,
 }) => {
   return (
     <ScrollView className="flex-1">
@@ -30,7 +31,7 @@ export const CartBottomSheetView: FC<
             <Ionicons name="close" size={24} color={colors.gray[400]} />
           </TouchableOpacity>
 
-          <CreditCard isFlipped={isFlipped} focusedField={focusedField || null}/>
+          <CreditCard cardData={cardData} isFlipped={isFlipped} focusedField={focusedField || null}/>
         </View>
         <View className="mt-6 gap-4">
           <InputController
@@ -78,7 +79,7 @@ export const CartBottomSheetView: FC<
                 label="CVV"
                 placeholder="000"
                 keyboardType="numeric"
-                maxLength={5}
+                maxLength={3}
                 onFocus={() => handleFieldFocus("cvv")}
                 onBlur={handleFieldBlur}
               />

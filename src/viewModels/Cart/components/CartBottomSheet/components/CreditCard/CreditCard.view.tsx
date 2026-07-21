@@ -2,18 +2,19 @@ import { FC } from "react";
 import { useCreditCardViewModel } from "./useCreditCard.viewModel";
 import { Text, View } from "react-native";
 import { FocusedField } from "../../useCartBottomSheet.viewModel";
-import { colors } from "../../../../../../styles/colors";
 import Animated from "react-native-reanimated";
 import { LinearGradient } from "expo-linear-gradient";
 import clsx from "clsx";
+import { CardData } from ".";
 
 const PURPLE_GRADIENT = ["#5B3A8F", "#6B5CA5", "#7B6CB5"] as const;
 
 export const CreditCardView: FC<
   ReturnType<typeof useCreditCardViewModel> & {
     focusedField: FocusedField | null;
+    cardData: CardData;
   }
-> = ({ focusedField, frontAnimatedStyle, backAnimatedStyle }) => {
+> = ({ focusedField, frontAnimatedStyle, backAnimatedStyle, cardData, formatCardNumber }) => {
   return (
     <View className="w-full h-[192px]">
      <Animated.View 
@@ -46,7 +47,7 @@ export const CreditCardView: FC<
             })}
           >
             <Text className="text-white text-lg tracking-widest text-center">
-              123
+              {formatCardNumber(cardData.number)}
             </Text>
             <View className="flex-row justify-between items-end">
               <View
@@ -58,7 +59,7 @@ export const CreditCardView: FC<
                   PORTADOR
                 </Text>
                 <Text className="text-white text-sm font-bold uppercase">
-                  NOME DO TITULAR
+                  {cardData.name.length ? cardData.name : "NOME DO TITULAR"}
                 </Text>
               </View>
               <View
@@ -70,7 +71,7 @@ export const CreditCardView: FC<
                   VÁLIDO ATÉ
                 </Text>
                 <Text className="text-white text-sm font-bold">
-                  MM/AA
+                  {cardData.expirationDate.length ? cardData.expirationDate : "MM/AA"}
                 </Text>
               </View>
             </View>
@@ -107,7 +108,7 @@ export const CreditCardView: FC<
                 "bg-blue-100": focusedField === "cvv",
               })}>
                 <Text>
-                  ...
+                  {cardData.CVV || "***"}
                 </Text>
               </View>
             </View>

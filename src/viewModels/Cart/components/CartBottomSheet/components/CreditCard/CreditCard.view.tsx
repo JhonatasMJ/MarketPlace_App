@@ -15,8 +15,8 @@ export const CreditCardView: FC<
   }
 > = ({ focusedField }) => {
   return (
-    <View className="w-full h-[192px">
-      <Animated.View
+    <View className="w-full h-[192px]">
+     <Animated.View
         style={[
           {
             position: "absolute",
@@ -41,7 +41,6 @@ export const CreditCardView: FC<
           </View>
           <View
             className={clsx("py-2 px-1 rounded-lg mb-6", {
-              "": focusedField !== "number",
               "bg-white/20": focusedField === "number",
             })}
           >
@@ -51,7 +50,6 @@ export const CreditCardView: FC<
             <View className="flex-row justify-between items-end">
               <View
                 className={clsx("flex-1 p-2 rounded-lg", {
-                  "": focusedField !== "name",
                   "bg-white/20": focusedField === "name",
                 })}
               >
@@ -64,7 +62,6 @@ export const CreditCardView: FC<
               </View>
               <View
                 className={clsx("ml-4 p-1 rounded-lg", {
-                  "": focusedField !== "expirationDate",
                   "bg-white/20": focusedField === "expirationDate",
                 })}
               >
@@ -72,7 +69,43 @@ export const CreditCardView: FC<
                   VÁLIDO ATÉ
                 </Text>
                 <Text className="text-white text-sm font-bold">
-                  "MM/AA"
+                  MM/AA
+                </Text>
+              </View>
+            </View>
+          </View>
+        </LinearGradient>
+      </Animated.View>
+       <Animated.View
+        style={[
+          {
+            position: "absolute",
+            width: "100%",
+            height: 192,
+            backfaceVisibility: "hidden",
+          },
+        ]}
+      >
+        <LinearGradient
+          start={{ x: 0, y: 0.5 }}
+          end={{ x: 1, y: 0 }}
+          colors={PURPLE_GRADIENT}
+          style={{
+            flex: 1,
+            borderRadius: 16,
+          }}
+        >
+          <View className="h-[40px] bg-black w-full mt-[20px]"/>
+          <View className="flex-1 justify-center items-end px-5">
+            <View className="w-24">
+              <Text className="text-white text-center text-xs font-semibold uppercase mb-2">
+                CVV
+              </Text>
+              <View className={clsx("bg-white p-2 rounded h-8 justify-center", {
+                "bg-blue-100": focusedField === "cvv",
+              })}>
+                <Text>
+                  ...
                 </Text>
               </View>
             </View>

@@ -1,8 +1,8 @@
 import { useMutation } from "@tanstack/react-query";
-import { updateProfile } from "../../services/profile.service";
+import { updateProfile } from "@/shared/services/profile.service";
 import { Toast } from "toastify-react-native";
-import { useUserStore } from "../../store/user-store";
-import { useModal } from "../../hooks/useModal";
+import { useUserStore } from "@/shared/store/user-store";
+import { useModal } from "@/shared/hooks/useModal";
 
 export const useUpdateProfileMutation = () => {
   const { updateUser } = useUserStore();

@@ -1,4 +1,4 @@
-import { CartProduct } from "../../../../shared/store/cart-store";
+import { CartProduct } from "@/shared/store/cart-store";
 import { CartCardView } from "./CartCard.view"
 import { useProductCardViewModel } from "./useCartCard.viewModel";
 

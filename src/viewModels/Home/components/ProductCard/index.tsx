@@ -1,4 +1,4 @@
-import { ProductInterface } from "../../../../shared/interfaces/product";
+import { ProductInterface } from "@/shared/interfaces/product";
 import { ProductCardView } from "./ProductCard.view";
 import { useProductCardViewModel } from "./useProductCard.viewModel";
 

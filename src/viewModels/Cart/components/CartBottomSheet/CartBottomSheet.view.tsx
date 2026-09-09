@@ -2,9 +2,9 @@ import { FC } from "react";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { useCartBottomSheetViewModel } from "./useCartBottomSheet.viewModel";
 import { Ionicons } from "@expo/vector-icons";
-import { colors } from "../../../../styles/colors";
-import { Button } from "../../../../shared/components/Button/Button";
-import { InputController } from "../../../../shared/components/InputController/InputController";
+import { colors } from "@/styles/colors";
+import { Button } from "@/shared/components/Button/Button";
+import { InputController } from "@/shared/components/InputController/InputController";
 import { CreditCard } from "./components/CreditCard";
 
 export const CartBottomSheetView: FC<

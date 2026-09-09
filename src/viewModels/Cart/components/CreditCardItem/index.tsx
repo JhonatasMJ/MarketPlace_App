@@ -1,4 +1,4 @@
-import { GetCreditCard } from "../../../../shared/interfaces/credit-card";
+import { GetCreditCard } from "@/shared/interfaces/credit-card";
 import { CreditCardItemView } from "./CreditCardItem.view";
 import { useCreditCardItemViewModel } from "./useCreditCardItem.viewModel";
 

@@ -1,8 +1,8 @@
 import { Image, Text, View } from "react-native";
-import { ProductCommentInterface } from "../../../../shared/interfaces/product-commets";
+import { ProductCommentInterface } from "@/shared/interfaces/product-commets";
 import { Ionicons } from "@expo/vector-icons";
-import { colors } from "../../../../styles/colors";
-import { useUserStore } from "../../../../shared/store/user-store";
+import { colors } from "@/styles/colors";
+import { useUserStore } from "@/shared/store/user-store";
 
 interface CommentItemProps {
   comment: ProductCommentInterface;

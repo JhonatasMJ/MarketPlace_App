@@ -1,7 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
-import { cartService } from "../services/cart.service";
+import { cartService } from "@/shared/services/cart.service";
 
 export interface CartProduct {
   id: number;

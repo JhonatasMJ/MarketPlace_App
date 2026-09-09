@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { UpdateCommentRequest } from "../../interfaces/http/update-comment";
-import { updateUserComment } from "../../services/product.service";
+import { UpdateCommentRequest } from "@/shared/interfaces/http/update-comment";
+import { updateUserComment } from "@/shared/services/product.service";
 import { Toast } from "toastify-react-native";
 
 export const useUpdateCommentMutation = (productId: number) => {

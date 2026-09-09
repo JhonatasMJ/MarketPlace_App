@@ -1,4 +1,4 @@
-import { CartProduct, OmitedProductCart } from "../store/cart-store";
+import { CartProduct, OmitedProductCart } from "@/shared/store/cart-store";
 
 export const cartService = {
   findExistingProduct: (productList: CartProduct[], productId: number) => {

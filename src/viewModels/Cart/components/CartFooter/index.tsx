@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { GetCreditCard } from "../../../../shared/interfaces/credit-card";
+import { GetCreditCard } from "@/shared/interfaces/credit-card";
 import { CartFooterView } from "./CartFooter.view";
 import { useCartFooterViewModel } from "./useCartFooter.viewModel";
 

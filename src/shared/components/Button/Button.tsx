@@ -1,7 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
 import { ActivityIndicator, Text, TouchableOpacity, TouchableOpacityProps } from "react-native";
 import { buttonVariants, ButtonVariantsProps } from "./button.variants";
-import { colors } from "../../../styles/colors";
+import { colors } from "@/styles/colors";
 
 interface ButtonProps extends TouchableOpacityProps, ButtonVariantsProps {
   leftIcon?: keyof typeof Ionicons.glyphMap;

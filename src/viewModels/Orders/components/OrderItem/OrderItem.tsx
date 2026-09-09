@@ -1,8 +1,8 @@
 import { Image, Text, View } from "react-native";
-import { OrderInterface } from "../../../../shared/interfaces/order";
-import { buildImageUrl } from "../../../../shared/helpers/buildImageUrl";
+import { OrderInterface } from "@/shared/interfaces/order";
+import { buildImageUrl } from "@/shared/helpers/buildImageUrl";
 import { format } from "date-fns";
-import { PriceText } from "../../../../shared/components/PriceText";
+import { PriceText } from "@/shared/components/PriceText";
 
 interface OrderItemProps {
   order: OrderInterface;

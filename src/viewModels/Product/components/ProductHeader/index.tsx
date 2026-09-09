@@ -1,10 +1,10 @@
 import { FC } from "react";
-import { GetProductDetailInterface } from "../../../../shared/interfaces/http/product-detail";
+import { GetProductDetailInterface } from "@/shared/interfaces/http/product-detail";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { colors } from "../../../../styles/colors";
-import { buildImageUrl } from "../../../../shared/helpers/buildImageUrl";
-import { PriceText } from "../../../../shared/components/PriceText";
+import { colors } from "@/styles/colors";
+import { buildImageUrl } from "@/shared/helpers/buildImageUrl";
+import { PriceText } from "@/shared/components/PriceText";
 import { router } from "expo-router";
 
 interface ProductHeaderParams {

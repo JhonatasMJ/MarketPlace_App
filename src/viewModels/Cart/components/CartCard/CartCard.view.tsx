@@ -1,9 +1,9 @@
 import { Image, Text, TouchableOpacity, View } from "react-native";
-import { buildImageUrl } from "../../../../shared/helpers/buildImageUrl";
+import { buildImageUrl } from "@/shared/helpers/buildImageUrl";
 import { Ionicons } from "@expo/vector-icons";
-import { colors } from "../../../../styles/colors";
-import { PriceText } from "../../../../shared/components/PriceText";
-import { CartProduct } from "../../../../shared/store/cart-store";
+import { colors } from "@/styles/colors";
+import { PriceText } from "@/shared/components/PriceText";
+import { CartProduct } from "@/shared/store/cart-store";
 import { useProductCardViewModel } from "./useCartCard.viewModel";
 import { FC } from "react";
 

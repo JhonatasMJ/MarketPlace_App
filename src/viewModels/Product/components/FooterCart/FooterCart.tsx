@@ -1,7 +1,7 @@
 import { Text, View } from "react-native"
-import { ProductInterface } from "../../../../shared/interfaces/product"
-import { PriceText } from "../../../../shared/components/PriceText"
-import { Button } from "../../../../shared/components/Button/Button"
+import { ProductInterface } from "@/shared/interfaces/product"
+import { PriceText } from "@/shared/components/PriceText"
+import { Button } from "@/shared/components/Button/Button"
 
 interface FooterCartParams {
     product: ProductInterface

@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
-import { getUserComment } from "../../services/product.service"
+import { getUserComment } from "@/shared/services/product.service"
 
 export const useGetUserCommentQuery = (productId: number) => {
 

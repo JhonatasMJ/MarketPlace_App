@@ -2,8 +2,8 @@ import { Image, Text, TouchableOpacity, View } from "react-native";
 import { useProductCardViewModel } from "./useProductCard.viewModel";
 import { FC } from "react";
 import { Ionicons } from "@expo/vector-icons";
-import { colors } from "../../../../styles/colors";
-import { PriceText } from "../../../../shared/components/PriceText";
+import { colors } from "@/styles/colors";
+import { PriceText } from "@/shared/components/PriceText";
 import { router } from "expo-router";
 
 export const ProductCardView: FC<

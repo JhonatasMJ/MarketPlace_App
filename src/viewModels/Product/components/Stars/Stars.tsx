@@ -1,6 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
-import { colors } from "../../../../styles/colors";
+import { colors } from "@/styles/colors";
 
 interface StarsParams {
   rating: number;

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { useGetUserCommentQuery } from "../../../../shared/queries/comments/user-get-use-comment.query";
-import { useCreateCommentMutation } from "../../../../shared/queries/comments/use-create-comment.mutation";
-import { useUpdateCommentMutation } from "../../../../shared/queries/comments/use-update-comment.mutation";
+import { useGetUserCommentQuery } from "@/shared/queries/comments/user-get-use-comment.query";
+import { useCreateCommentMutation } from "@/shared/queries/comments/use-create-comment.mutation";
+import { useUpdateCommentMutation } from "@/shared/queries/comments/use-update-comment.mutation";
 import { Toast } from "toastify-react-native";
-import { useBottomSheetStore } from "../../../../shared/store/bottomSheet-store";
+import { useBottomSheetStore } from "@/shared/store/bottomSheet-store";
 
 interface RatingFormInterface {
   content: string;

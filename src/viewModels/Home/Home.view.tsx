@@ -4,7 +4,7 @@ import { ProductCard } from "./components/ProductCard";
 import { useHomeViewModel } from "./useHome.viewModel";
 import { FC} from "react";
 import { Footer } from "./components/Footer/Footer";
-import { colors } from "../../styles/colors";
+import { colors } from "@/styles/colors";
 import { RenderHeader } from "./components/RenderHeader/RenderHeader";
 
 

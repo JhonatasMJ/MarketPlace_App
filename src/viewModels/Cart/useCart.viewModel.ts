@@ -1,8 +1,8 @@
 import { createElement } from "react";
-import { useBottomSheetStore } from "../../shared/store/bottomSheet-store";
-import { useCartStore } from "../../shared/store/cart-store";
+import { useBottomSheetStore } from "@/shared/store/bottomSheet-store";
+import { useCartStore } from "@/shared/store/cart-store";
 import { CartBottomSheet } from "./components/CartBottomSheet";
-import { useGetCreditCards } from "../../shared/queries/credit-cards/use-get-credit-cards.query";
+import { useGetCreditCards } from "@/shared/queries/credit-cards/use-get-credit-cards.query";
 
 
 export const useCartViewModel = () => {

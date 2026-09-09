@@ -1,8 +1,8 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { colors } from "../../../../styles/colors";
-import { Button } from "../../../../shared/components/Button/Button";
+import { colors } from "@/styles/colors";
+import { Button } from "@/shared/components/Button/Button";
 import { router } from "expo-router";
 
 export const EmptyListCart = () => {

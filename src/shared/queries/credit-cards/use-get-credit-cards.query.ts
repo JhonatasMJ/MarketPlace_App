@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
-import { getCreditCard } from "../../services/credit-card.service"
+import { getCreditCard } from "@/shared/services/credit-card.service"
 
 export const useGetCreditCards = () => {
     const query = useQuery({

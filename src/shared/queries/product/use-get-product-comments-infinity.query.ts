@@ -1,8 +1,8 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { getProductComments } from "../../services/product.service";
-import { buildImageUrl } from "../../helpers/buildImageUrl";
-import { ProductCommentInterface } from "../../interfaces/product-commets";
-import { baseURL } from "../../api/market-place";
+import { getProductComments } from "@/shared/services/product.service";
+import { buildImageUrl } from "@/shared/helpers/buildImageUrl";
+import { ProductCommentInterface } from "@/shared/interfaces/product-commets";
+import { baseURL } from "@/shared/api/market-place";
 
 export const useGetCommentsInfiniteQuery = (productId: number) => {
   const query = useInfiniteQuery({

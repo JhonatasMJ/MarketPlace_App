@@ -1,4 +1,4 @@
-import { GetCreditCard } from "../credit-card";
+import { GetCreditCard } from "@/shared/interfaces/credit-card";
 
 export interface CreateCreditCardRequest {
     number: string;

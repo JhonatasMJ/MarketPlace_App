@@ -1,9 +1,9 @@
 import { useMutation } from "@tanstack/react-query";
 import { isAxiosError } from "axios";
 import { Toast } from "toastify-react-native";
-import * as authService from "../../services/auth.service";
-import { RegisterHttpParams } from "../../interfaces/http/register";
-import { useUserStore } from "../../store/user-store";
+import * as authService from "@/shared/services/auth.service";
+import { RegisterHttpParams } from "@/shared/interfaces/http/register";
+import { useUserStore } from "@/shared/store/user-store";
 
 interface UseRegisterMutationParams {
   onSuccess?: () => void;

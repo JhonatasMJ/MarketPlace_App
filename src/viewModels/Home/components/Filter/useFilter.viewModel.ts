@@ -1,6 +1,6 @@
-import { useGetProductCategories } from "../../../../shared/queries/product/use-get-product-categories";
-import { useBottomSheetStore } from "../../../../shared/store/bottomSheet-store";
-import { useFilterStore } from "../../../../shared/store/use-filter-store";
+import { useGetProductCategories } from "@/shared/queries/product/use-get-product-categories";
+import { useBottomSheetStore } from "@/shared/store/bottomSheet-store";
+import { useFilterStore } from "@/shared/store/use-filter-store";
 
 export const useFilterViewModel = () => {
   const {

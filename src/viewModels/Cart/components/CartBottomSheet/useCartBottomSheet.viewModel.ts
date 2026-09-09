@@ -1,11 +1,11 @@
 import { useForm } from "react-hook-form";
-import { useCreateCreditCardMutation } from "../../../../shared/queries/credit-cards/use-create-credit-card.mutation";
+import { useCreateCreditCardMutation } from "@/shared/queries/credit-cards/use-create-credit-card.mutation";
 import {
   CreditCardFormData,
   creditCardSchema,
-} from "../../../../shared/schemas/credit-card";
+} from "@/shared/schemas/credit-card";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useBottomSheetStore } from "../../../../shared/store/bottomSheet-store";
+import { useBottomSheetStore } from "@/shared/store/bottomSheet-store";
 import { useRef, useState } from "react";
 
 export type FocusedField = "number" | "name" | "expirationDate" | "cvv"

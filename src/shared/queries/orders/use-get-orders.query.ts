@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
-import { getOrders } from "../../services/orders.service"
+import { getOrders } from "@/shared/services/orders.service"
 
 export const useGetOrders = () => {
     const query = useQuery({

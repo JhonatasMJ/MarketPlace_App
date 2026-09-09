@@ -6,8 +6,8 @@ import { ProductHeader } from "./components/ProductHeader";
 import { CommentItem } from "./components/CommentItem/CommentItem";
 import { ListFooter } from "./components/ListFooter/ListFooter";
 import { EmptyList } from "./components/EmptyList/EmptyList";
-import { Loading } from "../../shared/components/Loading/Loading";
-import { Error } from "../../shared/components/Error/Error";
+import { Loading } from "@/shared/components/Loading/Loading";
+import { Error } from "@/shared/components/Error/Error";
 import { FooterCart } from "./components/FooterCart/FooterCart";
 
 export const ProductView: FC<ReturnType<typeof useProductViewModel>> = ({

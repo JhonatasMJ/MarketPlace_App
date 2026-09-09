@@ -1,8 +1,8 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Text, TouchableOpacity, View } from "react-native";
-import { colors } from "../../../../styles/colors";
+import { colors } from "@/styles/colors";
 import { router } from "expo-router";
-import { useUserStore } from "../../../../shared/store/user-store";
+import { useUserStore } from "@/shared/store/user-store";
 
 interface HeaderParams {
   handleLogout: () => void;

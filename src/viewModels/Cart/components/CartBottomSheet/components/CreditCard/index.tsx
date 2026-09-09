@@ -1,4 +1,4 @@
-import { FocusedField } from "../../useCartBottomSheet.viewModel";
+import { FocusedField } from "@/viewModels/Cart/components/CartBottomSheet/useCartBottomSheet.viewModel";
 import { CreditCardView } from "./CreditCard.view";
 import { useCreditCardViewModel } from "./useCreditCard.viewModel";
 

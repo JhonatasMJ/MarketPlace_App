@@ -5,7 +5,7 @@ import {
   FieldValues,
   Path,
 } from "react-hook-form";
-import { Input, InputProps } from "../Input/Input";
+import { Input, InputProps } from "@/shared/components/Input/Input";
 
 /* Essa interface é responsável por definir as propriedades do InputController, omitindo as propriedades que são passadas para o Input */
 interface InputControllerProps<T extends FieldValues> extends Omit<

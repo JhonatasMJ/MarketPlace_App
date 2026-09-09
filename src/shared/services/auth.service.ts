@@ -1,8 +1,8 @@
-import { RegisterHttpParams } from "../interfaces/http/register";
-import { baseURL, marketPlaceApiClient } from "../api/market-place";
-import { AuthResponse } from "../interfaces/http/auth-response";
-import { LoginHttpParams } from "../interfaces/http/login";
-import { UploadAvatarResponse } from "../interfaces/http/upload-avatar";
+import { RegisterHttpParams } from "@/shared/interfaces/http/register";
+import { baseURL, marketPlaceApiClient } from "@/shared/api/market-place";
+import { AuthResponse } from "@/shared/interfaces/http/auth-response";
+import { LoginHttpParams } from "@/shared/interfaces/http/login";
+import { UploadAvatarResponse } from "@/shared/interfaces/http/upload-avatar";
 
 export const register = async (userData: RegisterHttpParams) => {
     const { data } = await marketPlaceApiClient.post<AuthResponse>("/auth/register", userData);

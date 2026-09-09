@@ -1,9 +1,9 @@
-import { marketPlaceApiClient } from "../api/market-place";
-import { GetCreditCard } from "../interfaces/credit-card";
+import { marketPlaceApiClient } from "@/shared/api/market-place";
+import { GetCreditCard } from "@/shared/interfaces/credit-card";
 import {
   CreateCreditCardRequest,
   CreateCreditCardResponse,
-} from "../interfaces/http/create-credit-card";
+} from "@/shared/interfaces/http/create-credit-card";
 
 //Services - é onde fazemos as requisições para o backend, e configuro os endpoints.
 

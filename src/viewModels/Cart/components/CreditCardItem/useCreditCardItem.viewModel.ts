@@ -1,4 +1,4 @@
-import { GetCreditCard } from "../../../../shared/interfaces/credit-card";
+import { GetCreditCard } from "@/shared/interfaces/credit-card";
 import { format } from "date-fns";
 
 export const useCreditCardItemViewModel = (creditCard: GetCreditCard) => {

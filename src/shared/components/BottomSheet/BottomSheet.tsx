@@ -3,9 +3,9 @@ import BottomSheet, {
   BottomSheetBackdrop,
   BottomSheetBackdropProps,
 } from "@gorhom/bottom-sheet";
-import { useBottomSheetStore } from "../../store/bottomSheet-store";
+import { useBottomSheetStore } from "@/shared/store/bottomSheet-store";
 import { useCallback, useMemo } from "react";
-import { colors } from "../../../styles/colors";
+import { colors } from "@/styles/colors";
 
 export const AppBottomSheet = () => {
   const { content, close, config } = useBottomSheetStore();

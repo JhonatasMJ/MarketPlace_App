@@ -2,9 +2,9 @@ import { FC } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { useFilterViewModel } from "./useFilter.viewModel";
 import { Ionicons } from "@expo/vector-icons";
-import { colors } from "../../../../styles/colors";
-import { Input } from "../../../../shared/components/Input/Input";
-import { Button } from "../../../../shared/components/Button/Button";
+import { colors } from "@/styles/colors";
+import { Input } from "@/shared/components/Input/Input";
+import { Button } from "@/shared/components/Button/Button";
 import Checkbox from "expo-checkbox";
 
 export const FilterView: FC<ReturnType<typeof useFilterViewModel>> = ({

@@ -1,18 +1,18 @@
-import { marketPlaceApiClient } from "../api/market-place";
+import { marketPlaceApiClient } from "@/shared/api/market-place";
 import {
   CreateCommentRequest,
   CreateCommentResponse,
-} from "../interfaces/http/create-comment";
-import { PaginatedResponse } from "../interfaces/http/paginated-response";
-import { GetProductsRequest } from "../interfaces/http/product";
-import { GetProductCommentsInterface } from "../interfaces/http/product-comments";
-import { GetProductDetailInterface } from "../interfaces/http/product-detail";
+} from "@/shared/interfaces/http/create-comment";
+import { PaginatedResponse } from "@/shared/interfaces/http/paginated-response";
+import { GetProductsRequest } from "@/shared/interfaces/http/product";
+import { GetProductCommentsInterface } from "@/shared/interfaces/http/product-comments";
+import { GetProductDetailInterface } from "@/shared/interfaces/http/product-detail";
 import {
   UpdateCommentRequest,
   UpdateCommentResponse,
-} from "../interfaces/http/update-comment";
-import { ProductCategory, ProductInterface } from "../interfaces/product";
-import { ProductCommentInterface } from "../interfaces/product-commets";
+} from "@/shared/interfaces/http/update-comment";
+import { ProductCategory, ProductInterface } from "@/shared/interfaces/product";
+import { ProductCommentInterface } from "@/shared/interfaces/product-commets";
 
 //Interface para resposta da API de produtos, extendendo a interface PaginatedResponse com o tipo ProductInterface, que é o dado que será retornado
 

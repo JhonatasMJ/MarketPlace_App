@@ -1,12 +1,12 @@
 import { Text, TouchableOpacity, View } from "react-native";
-import FormHeader from "../../shared/components/FormHeader/FormHeader";
-import { Input } from "../../shared/components/Input/Input";
+import FormHeader from "@/shared/components/FormHeader/FormHeader";
+import { Input } from "@/shared/components/Input/Input";
 import { router } from "expo-router";
-import { KeyboardContainer } from "../../shared/components/KeyboardContainer/KeyboardContainer";
+import { KeyboardContainer } from "@/shared/components/KeyboardContainer/KeyboardContainer";
 import { useLoginViewModel } from "./useLogin.viewModel";
 import { FC } from "react";
-import { InputController } from "../../shared/components/InputController/InputController";
-import { Button } from "../../shared/components/Button/Button";
+import { InputController } from "@/shared/components/InputController/InputController";
+import { Button } from "@/shared/components/Button/Button";
 
 export const LoginView: FC<ReturnType<typeof useLoginViewModel>> = ({
   control,

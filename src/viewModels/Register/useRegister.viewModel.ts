@@ -1,12 +1,12 @@
 import { useForm } from "react-hook-form";
-import { RegisterFormData, registerSchema } from "../../shared/schemas/register.schema";
+import { RegisterFormData, registerSchema } from "@/shared/schemas/register.schema";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useRegisterMutation } from "../../shared/queries/auth/use-register.mutation";
-import { useUserStore } from "../../shared/store/user-store";
-import { useImage } from "../../shared/hooks/useImage";
+import { useRegisterMutation } from "@/shared/queries/auth/use-register.mutation";
+import { useUserStore } from "@/shared/store/user-store";
+import { useImage } from "@/shared/hooks/useImage";
 import { useState } from "react";
 import { CameraType } from "expo-image-picker";
-import { useUploadAvatarMutation } from "../../shared/queries/auth/use-upload-avatar.mutation";
+import { useUploadAvatarMutation } from "@/shared/queries/auth/use-upload-avatar.mutation";
 
 export const useRegisterViewModel = () => {
   const { setSession, updateUser } = useUserStore();

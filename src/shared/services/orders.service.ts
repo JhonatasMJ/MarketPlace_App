@@ -1,9 +1,9 @@
-import { marketPlaceApiClient } from "../api/market-place";
-import { GetOrdersResponse } from "../interfaces/http/get-orders";
+import { marketPlaceApiClient } from "@/shared/api/market-place";
+import { GetOrdersResponse } from "@/shared/interfaces/http/get-orders";
 import {
   OrdersRequestParams,
   SubmitOrderResponse,
-} from "../interfaces/http/submit-orders";
+} from "@/shared/interfaces/http/submit-orders";
 
 export const submitOrder = async (order: OrdersRequestParams) => {
   const { data } = await marketPlaceApiClient.post<SubmitOrderResponse>(

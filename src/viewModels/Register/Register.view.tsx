@@ -1,11 +1,11 @@
 import { FC, useState } from "react";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { useRegisterViewModel } from "./useRegister.viewModel";
-import { InputController } from "../../shared/components/InputController/InputController";
-import FormHeader from "../../shared/components/FormHeader/FormHeader";
+import { InputController } from "@/shared/components/InputController/InputController";
+import FormHeader from "@/shared/components/FormHeader/FormHeader";
 import { router } from "expo-router";
-import { KeyboardContainer } from "../../shared/components/KeyboardContainer/KeyboardContainer";
-import { Button } from "../../shared/components/Button/Button";
+import { KeyboardContainer } from "@/shared/components/KeyboardContainer/KeyboardContainer";
+import { Button } from "@/shared/components/Button/Button";
 import { Ionicons } from "@expo/vector-icons";
 
 export const RegisterView: FC<ReturnType<typeof useRegisterViewModel>> = ({

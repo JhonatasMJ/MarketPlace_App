@@ -1,9 +1,9 @@
 import "react-native-reanimated";
 import { Stack } from "expo-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import "../styles/global.css";
-import { Modal } from "../shared/components/Modal/Modal";
-import { AppBottomSheet } from "../shared/components/BottomSheet/BottomSheet";
+import "@/styles/global.css";
+import { Modal } from "@/shared/components/Modals/Modal/Modal";
+import { AppBottomSheet } from "@/shared/components/BottomSheet/BottomSheet";
 import ToastManager from "toastify-react-native";
 const queryClient = new QueryClient();
 import { GestureHandlerRootView } from "react-native-gesture-handler";

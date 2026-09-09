@@ -5,12 +5,12 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { PriceText } from "../../../../shared/components/PriceText";
+import { PriceText } from "@/shared/components/PriceText";
 import { Ionicons } from "@expo/vector-icons";
-import { colors } from "../../../../styles/colors";
-import { Button } from "../../../../shared/components/Button/Button";
+import { colors } from "@/styles/colors";
+import { Button } from "@/shared/components/Button/Button";
 import { FC } from "react";
-import { CreditCardItem } from "../CreditCardItem";
+import { CreditCardItem } from "@/viewModels/Cart/components/CreditCardItem";
 import { useCartFooterViewModel } from "./useCartFooter.viewModel";
 import { CartFooterProps } from ".";
 

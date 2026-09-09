@@ -1,9 +1,9 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Text, TouchableOpacity, View } from "react-native";
-import { colors } from "../../../../styles/colors";
+import { colors } from "@/styles/colors";
 import { FC } from "react";
 import { useCreditCardItemViewModel } from "./useCreditCardItem.viewModel";
-import { GetCreditCard } from "../../../../shared/interfaces/credit-card";
+import { GetCreditCard } from "@/shared/interfaces/credit-card";
 
 export const CreditCardItemView: FC<
   ReturnType<typeof useCreditCardItemViewModel> & {

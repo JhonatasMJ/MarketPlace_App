@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createCreditCard } from "../../services/credit-card.service";
-import { CreateCreditCardRequest } from "../../interfaces/http/create-credit-card";
+import { createCreditCard } from "@/shared/services/credit-card.service";
+import { CreateCreditCardRequest } from "@/shared/interfaces/http/create-credit-card";
 import { Toast } from "toastify-react-native";
 
 export const useCreateCreditCardMutation = () => {

@@ -2,11 +2,11 @@ import { FC } from "react";
 import { ActivityIndicator, Text, TouchableOpacity, View } from "react-native";
 import { useReviewBottomSheetViewModel } from "./useReviewBottomSheet.viewModel";
 import { Ionicons } from "@expo/vector-icons";
-import { colors } from "../../../../styles/colors";
-import { Input } from "../../../../shared/components/Input/Input";
-import { Button } from "../../../../shared/components/Button/Button";
-import { Stars } from "../Stars/Stars";
-import { useBottomSheetStore } from "../../../../shared/store/bottomSheet-store";
+import { colors } from "@/styles/colors";
+import { Input } from "@/shared/components/Input/Input";
+import { Button } from "@/shared/components/Button/Button";
+import { Stars } from "@/viewModels/Product/components/Stars/Stars";
+import { useBottomSheetStore } from "@/shared/store/bottomSheet-store";
 
 export const ReviewBottomSheetView: FC<
   ReturnType<typeof useReviewBottomSheetViewModel>

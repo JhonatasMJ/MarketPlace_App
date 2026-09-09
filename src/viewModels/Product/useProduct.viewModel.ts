@@ -1,10 +1,10 @@
 import { createElement } from "react";
-import { useGetCommentsInfiniteQuery } from "../../shared/queries/product/use-get-product-comments-infinity.query";
-import { useGetProductDetails } from "../../shared/queries/product/use-get-product-details";
-import { useCartStore } from "../../shared/store/cart-store";
-import { useModalStore } from "../../shared/store/modal-store";
+import { useGetCommentsInfiniteQuery } from "@/shared/queries/product/use-get-product-comments-infinity.query";
+import { useGetProductDetails } from "@/shared/queries/product/use-get-product-details";
+import { useCartStore } from "@/shared/store/cart-store";
+import { useModalStore } from "@/shared/store/modal-store";
 import { router } from "expo-router";
-import { useBottomSheetStore } from "../../shared/store/bottomSheet-store";
+import { useBottomSheetStore } from "@/shared/store/bottomSheet-store";
 import { ReviewBottomSheet } from "./components/ReviewBottomSheet";
 import { ModalCart } from "./components/ModalCart/ModalCart";
 

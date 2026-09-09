@@ -1,5 +1,5 @@
 import { Modal as RNModal, TouchableWithoutFeedback, View } from "react-native";
-import { useModalStore } from "../../store/modal-store";
+import { useModalStore } from "@/shared/store/modal-store";
 
 export function Modal() { 
 

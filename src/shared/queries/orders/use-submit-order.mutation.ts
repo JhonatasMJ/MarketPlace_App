@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Toast } from "toastify-react-native";
-import { submitOrder } from "../../services/orders.service";
+import { submitOrder } from "@/shared/services/orders.service";
 
 export const useSubmitOrderMutation = () => {
   const queryClient = useQueryClient();

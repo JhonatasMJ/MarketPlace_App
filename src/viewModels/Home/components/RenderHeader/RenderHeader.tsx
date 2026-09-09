@@ -1,6 +1,6 @@
 import { memo } from "react";
-import { Header } from "../Header/Header";
-import { SearchInput } from "../SearchInput/SearchInput";
+import { Header } from "@/viewModels/Home/components/Header/Header";
+import { SearchInput } from "@/viewModels/Home/components/SearchInput/SearchInput";
 
  export const RenderHeader = memo(
         ({

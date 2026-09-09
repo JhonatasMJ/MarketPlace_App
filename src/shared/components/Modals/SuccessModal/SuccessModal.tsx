@@ -1,7 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Text, View } from "react-native";
-import { colors } from "../../../../styles/colors";
-import { Button } from "../../Button/Button";
+import { colors } from "@/styles/colors";
+import { Button } from "@/shared/components/Button/Button";
 
 export interface SuccessModalProps {
     title: string;

@@ -1,11 +1,11 @@
 import { Ionicons } from "@expo/vector-icons";
-import { useModalStore } from "../store/modal-store";
+import { useModalStore } from "@/shared/store/modal-store";
 import { createElement } from "react";
 import {
   SelectionModal,
   SelectionModalProps,
-} from "../components/Modals/SelectionModal/SelectionModal";
-import { SuccessModal, SuccessModalProps } from "../components/Modals/SuccessModal/SuccessModal";
+} from "@/shared/components/Modals/SelectionModal/SelectionModal";
+import { SuccessModal, SuccessModalProps } from "@/shared/components/Modals/SuccessModal/SuccessModal";
 
 export type SelectionVariants = "primary" | "secondary" | "danger";
 

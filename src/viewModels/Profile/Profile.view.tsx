@@ -1,12 +1,12 @@
 import { FC } from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import { useProfileViewModel } from "./useProfile.viewModel";
-import { KeyboardContainer } from "../../shared/components/KeyboardContainer/KeyboardContainer";
+import { KeyboardContainer } from "@/shared/components/KeyboardContainer/KeyboardContainer";
 import { ScrollView } from "react-native-gesture-handler";
-import FormHeader from "../../shared/components/FormHeader/FormHeader";
-import { InputController } from "../../shared/components/InputController/InputController";
+import FormHeader from "@/shared/components/FormHeader/FormHeader";
+import { InputController } from "@/shared/components/InputController/InputController";
 import { Ionicons } from "@expo/vector-icons";
-import { Button } from "../../shared/components/Button/Button";
+import { Button } from "@/shared/components/Button/Button";
 import { router } from "expo-router";
 import { Header } from "./components/Header/Header";
 
@@ -18,7 +18,6 @@ export const ProfileView: FC<ReturnType<typeof useProfileViewModel>> = ({
   isSubmitting,
   handleLogout,
   handleSelectImage,
-  loading,
 }) => {
   return (
     <KeyboardContainer>

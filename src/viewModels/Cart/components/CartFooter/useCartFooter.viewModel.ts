@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { useCartStore } from "../../../../shared/store/cart-store";
-import { GetCreditCard } from "../../../../shared/interfaces/credit-card";
-import { useSubmitOrderMutation } from "../../../../shared/queries/orders/use-submit-order.mutation";
+import { useCartStore } from "@/shared/store/cart-store";
+import { GetCreditCard } from "@/shared/interfaces/credit-card";
+import { useSubmitOrderMutation } from "@/shared/queries/orders/use-submit-order.mutation";
 import { router } from "expo-router";
-import { useModal } from "../../../../shared/hooks/useModal";
+import { useModal } from "@/shared/hooks/useModal";
 
 export const useCartFooterViewModel = () => {
   const { total, products, clearCart } = useCartStore();

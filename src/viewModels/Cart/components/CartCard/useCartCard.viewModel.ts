@@ -1,4 +1,4 @@
-import { useCartStore } from "../../../../shared/store/cart-store"
+import { useCartStore } from "@/shared/store/cart-store"
 
 export const useProductCardViewModel = () => {
     const {updateQuantity} = useCartStore()

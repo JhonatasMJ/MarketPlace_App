@@ -1,5 +1,5 @@
 import { ActivityIndicator, Text, View } from "react-native";
-import { colors } from "../../../../styles/colors";
+import { colors } from "@/styles/colors";
 
 export const Loading = () => {
   return (

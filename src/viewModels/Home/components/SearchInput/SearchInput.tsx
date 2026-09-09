@@ -1,9 +1,9 @@
 import { Text, TouchableOpacity, View } from "react-native";
-import { Input } from "../../../../shared/components/Input/Input";
+import { Input } from "@/shared/components/Input/Input";
 import { Ionicons } from "@expo/vector-icons";
-import { colors } from "../../../../styles/colors";
-import { useBottomSheetStore } from "../../../../shared/store/bottomSheet-store";
-import { Filter } from "../Filter";
+import { colors } from "@/styles/colors";
+import { useBottomSheetStore } from "@/shared/store/bottomSheet-store";
+import { Filter } from "@/viewModels/Home/components/Filter";
 
 interface SearchInputParams {
   searchInputText: (text: string) => void;

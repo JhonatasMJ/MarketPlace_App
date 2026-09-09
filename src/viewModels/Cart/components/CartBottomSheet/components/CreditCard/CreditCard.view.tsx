@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { useCreditCardViewModel } from "./useCreditCard.viewModel";
 import { Text, View } from "react-native";
-import { FocusedField } from "../../useCartBottomSheet.viewModel";
+import { FocusedField } from "@/viewModels/Cart/components/CartBottomSheet/useCartBottomSheet.viewModel";
 import Animated from "react-native-reanimated";
 import { LinearGradient } from "expo-linear-gradient";
 import clsx from "clsx";

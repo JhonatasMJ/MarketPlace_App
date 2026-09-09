@@ -14,7 +14,7 @@ export const useCartViewModel = () => {
     openBottomSheet({
       content: createElement(CartBottomSheet),
       config: {
-        snapPoints: ["50%"],
+        snapPoints: ["90%"],
       },
     });
   };

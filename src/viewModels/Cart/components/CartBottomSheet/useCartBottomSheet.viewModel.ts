@@ -51,17 +51,19 @@ export const useCartBottomSheetViewModel = () => {
   const { close } = useBottomSheetStore();
 
   const handleCreateCreditCard = handleSubmit(
-    async ({ CVV, expirationDate: rawExpirationDate, number }) => {
+    async ({ CVV, expirationDate: rawExpirationDate, number, titularName }) => {
       const expirationDate = formatExpirationDate(
         rawExpirationDate,
         (message) => setError("expirationDate", { message }),
       );
       const cleanedNumber = number.replace(/\s/g, "");
       await createCreditCardMutation.mutateAsync({
+        titularName,
         CVV: Number(CVV),
         expirationDate,
         number: cleanedNumber,
       });
+      reset();
       close();
     },
   );
@@ -114,6 +116,11 @@ export const useCartBottomSheetViewModel = () => {
     handleFieldFocus,
     handleFieldBlur,
     focusedField,
+    isCreatingCreditCard: createCreditCardMutation.isPending,
+    handleClose: () => {
+      reset();
+      close();
+    },
     cardData: {
       number: watchedValue.number,
       name: watchedValue.titularName,

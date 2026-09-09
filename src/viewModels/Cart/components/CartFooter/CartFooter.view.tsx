@@ -41,7 +41,10 @@ export const CartFooterView: FC<
           <Text className="text-[10px] font-semibold text-gray-600">
             CARTÕES DE CRÉDITO
           </Text>
-          <TouchableOpacity className="flex-row items-center ">
+          <TouchableOpacity
+            className="flex-row items-center "
+            onPress={openCartBottomSheet}
+          >
             <Ionicons
               name="card-outline"
               size={20}

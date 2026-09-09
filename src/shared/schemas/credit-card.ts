@@ -16,7 +16,7 @@ export const creditCardSchema = yup.object().shape({
   expirationDate: yup
     .string()
     .required("Data de vencimento é obrigatória")
-    .matches(/^d{2}\/\d{2}$/, "Data de vencimento deve estar no formato MM/AA"),
+    .matches(/^\d{2}\/\d{2}$/, "Data de vencimento deve estar no formato MM/AA"),
   CVV: yup.string().required("CVV é obrigatório").matches(/^\d{3}$/, "CVV deve ter 3 dígitos"),
 });
 

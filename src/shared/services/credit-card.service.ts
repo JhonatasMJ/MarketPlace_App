@@ -20,7 +20,7 @@ export const getCreditCard = async () => {
 
 export const createCreditCard = async (creditCardData: CreateCreditCardRequest) => {
   const { data } = await marketPlaceApiClient.post<CreateCreditCardResponse>(
-    "/credit-cards",
+    "/credit-card",
     creditCardData,
   );
 

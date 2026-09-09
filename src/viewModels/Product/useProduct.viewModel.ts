@@ -43,12 +43,12 @@ export const useProductViewModel = (productId: number) => {
   };
 
   const onGoToCart = () => {
-    router.push("/private/(tabs)/cart");
+    router.push("/cart");
     close();
   };
 
   const onContinueShopping = () => {
-    router.push("/private/(tabs)/home");
+    router.push("/home");
     close();
   };
 

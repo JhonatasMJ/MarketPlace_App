@@ -1,6 +1,7 @@
 import { GetCreditCard } from "@/shared/interfaces/credit-card";
 
 export interface CreateCreditCardRequest {
+    titularName: string;
     number: string;
     CVV: number;
     expirationDate: string;

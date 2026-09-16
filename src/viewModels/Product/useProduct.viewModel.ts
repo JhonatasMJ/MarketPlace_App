@@ -7,6 +7,7 @@ import { router } from "expo-router";
 import { useBottomSheetStore } from "@/shared/store/bottomSheet-store";
 import { ReviewBottomSheet } from "./components/ReviewBottomSheet";
 import { ModalCart } from "./components/ModalCart/ModalCart";
+import { LocalNotificationsService } from "@/shared/services/local.notifications.service";
 
 export const useProductViewModel = (productId: number) => {
   const { data: product, isLoading, error } = useGetProductDetails(productId);
@@ -59,6 +60,13 @@ export const useProductViewModel = (productId: number) => {
         name: product.name,
         price: product.value,
         image: product.photo,
+    })
+
+    //Configuração da notificação local para lembrar o usuário de finalizar a compra do produto adicionado ao carrinho
+    LocalNotificationsService.scheduleCartReminder({
+      delayInMinutes: 30,
+      productId: product.id,
+      productName: product.name,
     })
 
     open(createElement(ModalCart,{

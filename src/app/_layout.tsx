@@ -7,6 +7,7 @@ import { AppBottomSheet } from "@/shared/components/BottomSheet/BottomSheet";
 import ToastManager from "toastify-react-native";
 const queryClient = new QueryClient();
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { useNotifications } from "@/shared/hooks/useNotifications";
 
 export const unstable_settings = {
   initialRouteName: "index",
@@ -14,6 +15,7 @@ export const unstable_settings = {
 
 export default function RootLayout() {
   return (
+    useNotifications(),
     <GestureHandlerRootView style={{ flex: 1 }}>
     <QueryClientProvider client={queryClient}>
       <Stack screenOptions={{ headerShown: false }}>

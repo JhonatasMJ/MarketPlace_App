@@ -19,16 +19,16 @@ Notifications.setNotificationHandler({
   }),
 });
 
-const requestPermissions = async ():Promise<boolean> => {
-  const {status:existingStatus} = await Notifications.getPermissionsAsync();
+const requestPermissions = async (): Promise<boolean> => {
+  const { status: existingStatus } = await Notifications.getPermissionsAsync();
 
   let finalStatus = existingStatus;
   if (existingStatus !== "granted") {
-    const {status} = await Notifications.requestPermissionsAsync();
+    const { status } = await Notifications.requestPermissionsAsync();
     finalStatus = status;
   }
   return finalStatus === "granted";
-}
+};
 
 const setupNotificationChannel = async () => {
   if (Platform.OS === "android") {
@@ -41,7 +41,7 @@ const setupNotificationChannel = async () => {
   }
 };
 
-interface ScheduleCartReminderInterface {
+interface ScheduleProductInterface {
   productName: string;
   productId: number;
   delayInMinutes: number;
@@ -51,12 +51,12 @@ const scheduleCartReminder = async ({
   productName,
   productId,
   delayInMinutes,
-}: ScheduleCartReminderInterface) => {
+}: ScheduleProductInterface) => {
   const hasPermission = await requestPermissions();
   if (!hasPermission) {
-    return
-  };
-  const notification = await Notifications.scheduleNotificationAsync({
+    return;
+  }
+  await Notifications.scheduleNotificationAsync({
     identifier: NOTIFICATIONS_IDS.CART_REMINDER,
     content: {
       title: "Você esqueceu algo no carrinho!",
@@ -68,14 +68,41 @@ const scheduleCartReminder = async ({
     },
     trigger: {
       type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL,
-      seconds: delayInMinutes,
+      seconds: delayInMinutes * 60,
     },
   });
-  return notification;
+};
+
+const scheduleFeedbackNotification = async ({
+  productName,
+  productId,
+  delayInMinutes,
+}: ScheduleProductInterface) => {
+  const hasPermission = await requestPermissions();
+  if (!hasPermission) {
+    return;
+  }
+
+  await Notifications.scheduleNotificationAsync({
+    identifier: `${NOTIFICATIONS_IDS.PURCHASE_FEEDBACK}-${productId}`,
+    content: {
+      title: "Como foi sua compra?",
+      body: `Você realizou o pedido do produto ${productName}. Envie um feedback do que achou do produto!`,
+      data: {
+        type: "purchase-feedback",
+        productId: String(productId),
+      },
+    },
+    trigger: {
+      type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL,
+      seconds: delayInMinutes * 60,
+    },
+  });
 };
 
 export const LocalNotificationsService = {
   scheduleCartReminder,
   requestPermissions,
   setupNotificationChannel,
+  scheduleFeedbackNotification,
 };

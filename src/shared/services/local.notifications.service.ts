@@ -9,6 +9,9 @@ const NOTIFICATIONS_IDS = {
   PURCHASE_FEEDBACK: "purchase-feedback",
 };
 
+//configurar o scheme no app.json para que o deep link funcione corretamente
+const DEEP_LINK = "marketplace://"
+
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
     shouldPlaySound: true /* Faz som da notificação
@@ -64,6 +67,7 @@ const scheduleCartReminder = async ({
       data: {
         type: "cart-reminder",
         productId: String(productId),
+        deepLink: `${DEEP_LINK}cart`
       },
     },
     trigger: {
@@ -91,6 +95,7 @@ const scheduleFeedbackNotification = async ({
       data: {
         type: "purchase-feedback",
         productId: String(productId),
+        deepLink: `${DEEP_LINK}product/${productId}`
       },
     },
     trigger: {

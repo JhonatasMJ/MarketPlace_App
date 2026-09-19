@@ -1,12 +1,29 @@
-import { useEffect } from 'react';
-import { LocalNotificationsService } from '../services/local.notifications.service';
-
+import { useEffect } from "react";
+import { LocalNotificationsService } from "../services/local.notifications.service";
+import * as Notifications from "expo-notifications";
+import { Linking } from "react-native";
 
 export const useNotifications = () => {
+  useEffect(() => {
+    LocalNotificationsService.requestPermissions();
+    LocalNotificationsService.setupNotificationChannel();
+    const lastResponse = Notifications.getLastNotificationResponse();
+    if (lastResponse) {
+      const deepLink = lastResponse.notification.request.content.data?.deepLink;
+      if (deepLink && typeof deepLink === "string") {
+        Linking.openURL(deepLink);
+      }
+    }
+    const subscription = Notifications.addNotificationResponseReceivedListener(
+      (response) => {
+        const deepLink = response.notification.request.content.data?.deepLink;
+        if (deepLink && typeof deepLink === "string") {
+          Linking.openURL(deepLink);
+        }
+      },
+    );
 
- useEffect(() => {
-  LocalNotificationsService.requestPermissions()
-  LocalNotificationsService.setupNotificationChannel()
- }, [])
+    return () => subscription.remove();
+  }, []);
   return {};
-}
+};

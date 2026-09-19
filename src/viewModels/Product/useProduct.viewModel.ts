@@ -1,4 +1,4 @@
-import { createElement } from "react";
+import { createElement, useEffect } from "react";
 import { useGetCommentsInfiniteQuery } from "@/shared/queries/product/use-get-product-comments-infinity.query";
 import { useGetProductDetails } from "@/shared/queries/product/use-get-product-details";
 import { useCartStore } from "@/shared/store/cart-store";
@@ -9,7 +9,7 @@ import { ReviewBottomSheet } from "./components/ReviewBottomSheet";
 import { ModalCart } from "./components/ModalCart/ModalCart";
 import { LocalNotificationsService } from "@/shared/services/local.notifications.service";
 
-export const useProductViewModel = (productId: number) => {
+export const useProductViewModel = (productId: number, openFeedbackBottomSheet: boolean) => {
   const { data: product, isLoading, error } = useGetProductDetails(productId);
   const { addProduct } = useCartStore();
   const {open, close} = useModalStore();
@@ -88,6 +88,12 @@ export const useProductViewModel = (productId: number) => {
       },
      });
   }
+
+  useEffect(() => {
+    if (openFeedbackBottomSheet) {
+      handleOpenReview();
+    }
+  }, [openFeedbackBottomSheet, product]);
 
   return {
     product,

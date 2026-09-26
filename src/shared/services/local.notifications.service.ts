@@ -10,7 +10,7 @@ const NOTIFICATIONS_IDS = {
 };
 
 //configurar o scheme no app.json para que o deep link funcione corretamente
-const DEEP_LINK = "marketplace://"
+const DEEP_LINK = "marketplace://";
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -31,6 +31,14 @@ const requestPermissions = async (): Promise<boolean> => {
     finalStatus = status;
   }
   return finalStatus === "granted";
+};
+
+const cancelNotifications = async (notificationId: string) => {
+  try {
+    await Notifications.cancelScheduledNotificationAsync(notificationId);
+  } catch (error) {
+    console.error("[Local Notifications]" + JSON.stringify(error));
+  }
 };
 
 const setupNotificationChannel = async () => {
@@ -60,14 +68,14 @@ const scheduleCartReminder = async ({
     return;
   }
   await Notifications.scheduleNotificationAsync({
-    identifier: NOTIFICATIONS_IDS.CART_REMINDER,
+    identifier: `${NOTIFICATIONS_IDS.CART_REMINDER}-${productId}`,
     content: {
       title: "Você esqueceu algo no carrinho!",
       body: `O produto ${productName} está esperando por você. Finalize sua compra agora!`,
       data: {
         type: "cart-reminder",
         productId: String(productId),
-        deepLink: `${DEEP_LINK}cart`
+        deepLink: `${DEEP_LINK}cart`,
       },
     },
     trigger: {
@@ -95,7 +103,7 @@ const scheduleFeedbackNotification = async ({
       data: {
         type: "purchase-feedback",
         productId: String(productId),
-        deepLink: `${DEEP_LINK}product/${productId}?openFeedbackBottomSheet=true`
+        deepLink: `${DEEP_LINK}product/${productId}?openFeedbackBottomSheet=true`,
       },
     },
     trigger: {
@@ -105,9 +113,11 @@ const scheduleFeedbackNotification = async ({
   });
 };
 
-export const LocalNotificationsService = {
+export const localNotificationsService = {
   scheduleCartReminder,
   requestPermissions,
   setupNotificationChannel,
   scheduleFeedbackNotification,
+  cancelNotifications,
+  NOTIFICATIONS_IDS,
 };

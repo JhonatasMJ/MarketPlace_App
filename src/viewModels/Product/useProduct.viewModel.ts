@@ -7,13 +7,17 @@ import { router } from "expo-router";
 import { useBottomSheetStore } from "@/shared/store/bottomSheet-store";
 import { ReviewBottomSheet } from "./components/ReviewBottomSheet";
 import { ModalCart } from "./components/ModalCart/ModalCart";
-import { LocalNotificationsService } from "@/shared/services/local.notifications.service";
+import { localNotificationsService } from "@/shared/services/local.notifications.service";
 
-export const useProductViewModel = (productId: number, openFeedbackBottomSheet: boolean) => {
+export const useProductViewModel = (
+  productId: number,
+  openFeedbackBottomSheet: boolean,
+) => {
   const { data: product, isLoading, error } = useGetProductDetails(productId);
   const { addProduct } = useCartStore();
-  const {open, close} = useModalStore();
-  const {open: openBottomSheet, close: closeBottomSheet} = useBottomSheetStore();
+  const { open, close } = useModalStore();
+  const { open: openBottomSheet, close: closeBottomSheet } =
+    useBottomSheetStore();
 
   const {
     comments,
@@ -25,7 +29,6 @@ export const useProductViewModel = (productId: number, openFeedbackBottomSheet: 
     isFetchingNextPage,
     isRefetching,
   } = useGetCommentsInfiniteQuery(productId);
-
 
   const handleLoadMore = () => {
     if (hasNextPage && !isFetchingNextPage) {
@@ -56,38 +59,40 @@ export const useProductViewModel = (productId: number, openFeedbackBottomSheet: 
   const handleAddToCart = () => {
     if (!product) return;
     addProduct({
-        id: product.id,
-        name: product.name,
-        price: product.value,
-        image: product.photo,
-    })
+      id: product.id,
+      name: product.name,
+      price: product.value,
+      image: product.photo,
+    });
 
     //Configuração da notificação local para lembrar o usuário de finalizar a compra do produto adicionado ao carrinho
-    LocalNotificationsService.scheduleCartReminder({
+    localNotificationsService.scheduleCartReminder({
       delayInMinutes: 30,
       productId: product.id,
       productName: product.name,
-    })
+    });
 
-    open(createElement(ModalCart,{
+    open(
+      createElement(ModalCart, {
         productName: product.name,
         onGoToCart: onGoToCart,
         onClose: () => close,
         onContinueShopping: onContinueShopping,
-    }))
+      }),
+    );
   };
 
   const handleOpenReview = () => {
-     if(!product) return;
-     openBottomSheet({
+    if (!product) return;
+    openBottomSheet({
       content: createElement(ReviewBottomSheet, {
-        productId
+        productId,
       }),
       config: {
         snapPoints: ["85%"],
       },
-     });
-  }
+    });
+  };
 
   useEffect(() => {
     if (openFeedbackBottomSheet) {

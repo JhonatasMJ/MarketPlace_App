@@ -4,4 +4,5 @@ export interface RegisterHttpParams {
     password: string;
     phone: string;
     avatarUrl?: string;
+    notificationToken?: string;
 }

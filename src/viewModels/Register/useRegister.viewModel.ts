@@ -7,10 +7,12 @@ import { useImage } from "@/shared/hooks/useImage";
 import { useState } from "react";
 import { CameraType } from "expo-image-picker";
 import { useUploadAvatarMutation } from "@/shared/queries/auth/use-upload-avatar.mutation";
+import { useOneSignal } from "@/shared/hooks/useOneSignal";
 
 export const useRegisterViewModel = () => {
   const { setSession, updateUser } = useUserStore();
   const [avatarUri, setAvatarUri] = useState<string | null>(null);
+  const {playerId} = useOneSignal();
   const { handleSelectImage } = useImage({
     callback: setAvatarUri,
     cameraType: CameraType.front,
@@ -40,9 +42,9 @@ export const useRegisterViewModel = () => {
   const userRegisterMutation = useRegisterMutation({});
 
   /* Função para enviar os dados do formulário para o backend */
-  const onSubmit = handleSubmit((userData) => {
+  const onSubmit = handleSubmit(async (userData) => {
     const { confirmPassword, ...registerData } = userData;
-    userRegisterMutation.mutate(registerData);
+    await userRegisterMutation.mutateAsync({ ...registerData, notificationToken: playerId });
   });
 
   return {

@@ -8,6 +8,7 @@ import ToastManager from "toastify-react-native";
 const queryClient = new QueryClient();
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { useNotifications } from "@/shared/hooks/useNotifications";
+import { useOneSignal } from "@/shared/hooks/useOneSignal";
 
 export const unstable_settings = {
   initialRouteName: "index",
@@ -16,6 +17,7 @@ export const unstable_settings = {
 export default function RootLayout() {
   return (
     useNotifications(),
+    useOneSignal(),
     <GestureHandlerRootView style={{ flex: 1 }}>
     <QueryClientProvider client={queryClient}>
       <Stack screenOptions={{ headerShown: false }}>

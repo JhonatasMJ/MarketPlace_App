@@ -6,19 +6,27 @@ import { colors } from "@/styles/colors";
 import { buildImageUrl } from "@/shared/helpers/buildImageUrl";
 import { PriceText } from "@/shared/components/PriceText";
 import { router } from "expo-router";
+import { FavoriteButton } from "./components/FavoriteButton";
 
 interface ProductHeaderParams {
   productDetails: GetProductDetailInterface;
   handleOpenReview: () => void;
 }
 
-export const ProductHeader: FC<ProductHeaderParams> = ({ productDetails, handleOpenReview }) => {
+export const ProductHeader: FC<ProductHeaderParams> = ({
+  productDetails,
+  handleOpenReview,
+}) => {
   return (
     <>
-      <View className="pb-5 items-start">
-        <TouchableOpacity onPress={() => router.back()} className="w-full justify-start flex-row items-center gap-3">
+      <View className="pb-5 items-start flex-row justify-between">
+        <TouchableOpacity
+          onPress={() => router.back()}
+          className="justify-start flex-row items-center gap-3"
+        >
           <Ionicons name="arrow-back" size={24} color={colors["purple-base"]} />
           <Text className="text-base text-purple-base">Voltar</Text>
+          <FavoriteButton productId={productDetails.id} />
         </TouchableOpacity>
       </View>
       <View className="w-full rounded-lg  shadow-gray-500/30 bg-white">
